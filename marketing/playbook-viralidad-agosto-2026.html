@@ -1,0 +1,779 @@
+<title>Donnit · Playbook de Viralidad · Agosto</title>
+<style>
+  :root {
+    /* Neutrals with a green bias — chosen, not defaulted */
+    --ground: #f6faf3;
+    --surface: #ffffff;
+    --surface-2: #eef4e9;
+    --ink: #16261c;
+    --ink-soft: #3f5347;
+    --muted: #6a7d70;
+    --line: #dde6d6;
+    /* Brand */
+    --verde: #8fd678;      /* donación / gratis / impacto */
+    --verde-deep: #4f9a3a;
+    --turquesa: #52B788;   /* alquiler / Moments / pago */
+    --turquesa-deep: #2f7d5b;
+    --ink-accent: #1f3a2b; /* build-in-public / storytelling */
+    /* semantic */
+    --warn: #c9642b;
+    --shadow: 0 1px 2px rgba(22,38,28,.05), 0 8px 24px rgba(22,38,28,.06);
+    --radius: 18px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0d1712;
+      --surface: #131f19;
+      --surface-2: #17271e;
+      --ink: #eaf3e6;
+      --ink-soft: #b8c9bd;
+      --muted: #849389;
+      --line: #263a2e;
+      --muted: #849389;
+      --verde: #9bdd85;
+      --verde-deep: #7ec765;
+      --turquesa: #63c99a;
+      --turquesa-deep: #4fb98a;
+      --ink-accent: #cfe8d6;
+      --warn: #e08a53;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #f6faf3; --surface: #ffffff; --surface-2: #eef4e9;
+    --ink: #16261c; --ink-soft: #3f5347; --muted: #6a7d70; --line: #dde6d6;
+    --verde: #8fd678; --verde-deep: #4f9a3a; --turquesa: #52B788; --turquesa-deep: #2f7d5b;
+    --ink-accent: #1f3a2b; --warn: #c9642b;
+    --shadow: 0 1px 2px rgba(22,38,28,.05), 0 8px 24px rgba(22,38,28,.06);
+  }
+  :root[data-theme="dark"] {
+    --ground: #0d1712; --surface: #131f19; --surface-2: #17271e;
+    --ink: #eaf3e6; --ink-soft: #b8c9bd; --muted: #849389; --line: #263a2e;
+    --verde: #9bdd85; --verde-deep: #7ec765; --turquesa: #63c99a; --turquesa-deep: #4fb98a;
+    --ink-accent: #cfe8d6; --warn: #e08a53;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    line-height: 1.55;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 20px 96px; }
+  section { margin-top: 56px; }
+
+  h1, h2, h3 { text-wrap: balance; line-height: 1.12; margin: 0; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.5rem, 5vw, 2.05rem); font-weight: 800; }
+  h3 { font-size: 1.12rem; font-weight: 750; }
+  p { margin: 0; }
+  strong { font-weight: 700; }
+
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .16em; font-size: .72rem;
+    font-weight: 700; color: var(--verde-deep);
+  }
+  .section-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+  .section-head .num {
+    font-variant-numeric: tabular-nums; font-size: .72rem; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--muted); font-weight: 700;
+  }
+  .lede { color: var(--ink-soft); font-size: 1.02rem; }
+
+  /* Masthead */
+  .masthead { padding-top: 64px; }
+  .logo-row { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+  .logo-badge {
+    width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+    background: var(--verde); color: #0e2214; font-weight: 900; font-size: 1.35rem;
+    box-shadow: var(--shadow);
+  }
+  .logo-row span { font-weight: 800; letter-spacing: -.01em; }
+  .masthead h1 {
+    font-size: clamp(2.3rem, 8.5vw, 3.6rem); font-weight: 850; margin-top: 10px;
+  }
+  .masthead .sub { margin-top: 18px; font-size: 1.12rem; color: var(--ink-soft); max-width: 34ch; }
+  .kicker {
+    display: inline-block; margin-bottom: 4px; font-size: .8rem; font-weight: 700;
+    letter-spacing: .04em; color: var(--turquesa-deep);
+  }
+
+  /* Verdict callout */
+  .verdict {
+    margin-top: 40px; background: var(--ink-accent); color: #eaf3e6;
+    border-radius: var(--radius); padding: 26px 24px; box-shadow: var(--shadow);
+  }
+  :root[data-theme="dark"] .verdict { background: #0a1410; border: 1px solid var(--line); }
+  @media (prefers-color-scheme: dark) { .verdict { background: #0a1410; border: 1px solid var(--line); } }
+  .verdict .eyebrow { color: var(--verde); }
+  .verdict p { margin-top: 12px; font-size: 1.15rem; line-height: 1.5; color: #eef6ea; }
+  .verdict strong { color: #fff; }
+  :root[data-theme="dark"] .verdict p { color: var(--ink); }
+  :root[data-theme="dark"] .verdict strong { color: var(--verde); }
+
+  /* Metric strip */
+  .metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+  @media (min-width: 620px) { .metrics { grid-template-columns: repeat(4, 1fr); } }
+  .metric {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px; box-shadow: var(--shadow);
+  }
+  .metric .val { font-size: 1.7rem; font-weight: 820; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  .metric .lab { font-size: .78rem; color: var(--muted); margin-top: 3px; line-height: 1.3; }
+  .metric.flag .val { color: var(--warn); }
+
+  /* Winners table */
+  .table-scroll { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); }
+  table { border-collapse: collapse; width: 100%; min-width: 560px; background: var(--surface); font-size: .93rem; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  thead th {
+    background: var(--surface-2); font-size: .72rem; text-transform: uppercase;
+    letter-spacing: .07em; color: var(--muted); font-weight: 750;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .pill {
+    display: inline-block; font-size: .68rem; font-weight: 750; padding: 3px 9px;
+    border-radius: 999px; letter-spacing: .02em; white-space: nowrap;
+  }
+  .pill.story { background: color-mix(in srgb, var(--ink-accent) 14%, transparent); color: var(--ink); border:1px solid var(--line); }
+  .pill.donar { background: color-mix(in srgb, var(--verde) 26%, transparent); color: var(--verde-deep); }
+  .pill.launch { background: color-mix(in srgb, var(--turquesa) 22%, transparent); color: var(--turquesa-deep); }
+  .lead-metric { font-weight: 800; color: var(--verde-deep); }
+
+  /* Findings */
+  .findings { display: grid; gap: 14px; }
+  @media (min-width: 620px) { .findings { grid-template-columns: 1fr 1fr; } }
+  .finding {
+    background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--warn);
+    border-radius: 14px; padding: 18px 18px; box-shadow: var(--shadow);
+  }
+  .finding h3 { display: flex; gap: 8px; align-items: baseline; }
+  .finding h3 .idx { color: var(--warn); font-variant-numeric: tabular-nums; font-weight: 800; }
+  .finding p { margin-top: 8px; color: var(--ink-soft); font-size: .96rem; }
+  .finding .data { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--ink); }
+
+  /* Constraints -> plays */
+  .adapt { display: grid; gap: 12px; }
+  .adapt-row {
+    display: grid; grid-template-columns: 1fr; gap: 6px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 18px; box-shadow: var(--shadow);
+  }
+  @media (min-width: 620px) { .adapt-row { grid-template-columns: 0.9fr 1.1fr; gap: 18px; align-items: center; } }
+  .adapt-row .have { font-weight: 750; display: flex; gap: 9px; align-items: baseline; }
+  .adapt-row .have .dot { font-size: 1.1rem; }
+  .adapt-row .do { color: var(--ink-soft); font-size: .95rem; }
+  .adapt-row .do b { color: var(--ink); }
+
+  /* Golden rules */
+  .rules { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .rules li {
+    display: flex; gap: 12px; align-items: flex-start; background: var(--surface-2);
+    border-radius: 12px; padding: 13px 15px; font-size: .96rem; color: var(--ink-soft);
+  }
+  .rules li b { color: var(--ink); }
+  .rules .mk { color: var(--verde-deep); font-weight: 800; flex: none; }
+
+  /* Calendar */
+  .week-tag {
+    display: inline-flex; align-items: center; gap: 8px; margin: 8px 0 18px;
+    font-size: .78rem; font-weight: 750; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .week-tag::before { content:""; width: 26px; height: 2px; background: var(--verde); border-radius: 2px; }
+  .cards { display: grid; gap: 16px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 20px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+  }
+  .card::before {
+    content:""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+    background: var(--edge, var(--ink-accent));
+  }
+  .card[data-kind="donar"]   { --edge: var(--verde); }
+  .card[data-kind="moments"] { --edge: var(--turquesa); }
+  .card[data-kind="story"]   { --edge: var(--ink-accent); }
+  .card[data-kind="bridge"]  { --edge: linear-gradient(var(--verde), var(--turquesa)); }
+  .card-top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+  .card-id { display: flex; align-items: center; gap: 10px; }
+  .reel-no {
+    font-variant-numeric: tabular-nums; font-weight: 850; font-size: .82rem;
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px;
+    padding: 3px 9px; letter-spacing: .02em;
+  }
+  .tag {
+    font-size: .68rem; font-weight: 750; padding: 3px 9px; border-radius: 999px; letter-spacing:.02em;
+  }
+  .tag.donar   { background: color-mix(in srgb, var(--verde) 24%, transparent); color: var(--verde-deep); }
+  .tag.moments { background: color-mix(in srgb, var(--turquesa) 22%, transparent); color: var(--turquesa-deep); }
+  .tag.story   { background: color-mix(in srgb, var(--ink-accent) 13%, transparent); color: var(--ink); border:1px solid var(--line); }
+  .tag.bridge  { background: color-mix(in srgb, var(--turquesa) 18%, transparent); color: var(--turquesa-deep); }
+  .card h3 { margin-top: 14px; font-size: 1.18rem; }
+  .meta { font-size: .8rem; color: var(--muted); margin-top: 6px; }
+  .field { margin-top: 14px; }
+  .field .k {
+    font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 750;
+    color: var(--muted); display: block; margin-bottom: 3px;
+  }
+  .field.hook .v { font-size: 1.05rem; font-weight: 700; color: var(--ink); }
+  .field .v { color: var(--ink-soft); font-size: .96rem; }
+  .field .v.script { color: var(--ink); }
+  .onscreen {
+    display: inline-block; font-weight: 700; font-size: .92rem;
+    background: var(--surface-2); border-radius: 8px; padding: 4px 10px; color: var(--ink);
+  }
+  .cta-line {
+    margin-top: 14px; padding-top: 13px; border-top: 1px dashed var(--line);
+    display: flex; gap: 8px; align-items: baseline; font-size: .95rem;
+  }
+  .cta-line .k { color: var(--muted); font-weight: 700; font-size: .7rem; text-transform: uppercase; letter-spacing:.1em; flex:none; }
+  .cta-line .v { color: var(--ink); font-weight: 650; }
+  .why {
+    margin-top: 12px; font-size: .86rem; color: var(--ink-soft);
+    background: color-mix(in srgb, var(--verde) 9%, transparent); border-radius: 10px; padding: 10px 12px;
+  }
+  .why b { color: var(--verde-deep); }
+
+  /* Literal shooting script */
+  .literal { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; }
+  .literal > summary {
+    cursor: pointer; list-style: none; font-weight: 750; font-size: .84rem;
+    color: var(--turquesa-deep); display: flex; align-items: center; gap: 8px;
+    letter-spacing: .01em; user-select: none;
+  }
+  .literal > summary::-webkit-details-marker { display: none; }
+  .literal > summary .chev { transition: transform .2s ease; display: inline-block; font-size: .7rem; }
+  .literal[open] > summary .chev { transform: rotate(90deg); }
+  .literal > summary .dur { margin-left: auto; color: var(--muted); font-weight: 650; font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { .literal > summary .chev { transition: none; } }
+  .beats { display: grid; gap: 2px; margin-top: 14px; }
+  .beat { display: grid; grid-template-columns: 62px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+  .beat:last-child { border-bottom: none; }
+  .tc {
+    font-variant-numeric: tabular-nums; font-size: .74rem; font-weight: 750;
+    color: var(--muted); letter-spacing: .01em; padding-top: 2px; white-space: nowrap;
+  }
+  .beat-body { display: grid; gap: 6px; }
+  .plano { font-size: .82rem; color: var(--muted); }
+  .plano b { color: var(--ink-soft); font-weight: 700; }
+  .dice {
+    font-size: .98rem; color: var(--ink); font-weight: 600; line-height: 1.4;
+    border-left: 3px solid var(--turquesa); padding-left: 11px;
+  }
+  .card[data-kind="donar"] .dice { border-left-color: var(--verde); }
+  .card[data-kind="story"] .dice { border-left-color: var(--ink-accent); }
+  .ost { font-size: .78rem; color: var(--muted); }
+  .ost span {
+    display: inline-block; font-weight: 700; color: var(--ink);
+    background: var(--surface-2); border-radius: 6px; padding: 2px 8px; margin-left: 2px;
+  }
+  .beat .action { font-size: .85rem; color: var(--ink-soft); font-style: italic; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 16px; font-size: .8rem; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+  .stop { border-left-color: var(--warn); }
+  footer { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
+
+  a { color: var(--turquesa-deep); }
+  @media (prefers-reduced-motion: no-preference) {
+    .card { transition: transform .18s ease, box-shadow .18s ease; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(22,38,28,.08), 0 18px 40px rgba(22,38,28,.1); }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="logo-row">
+      <div class="logo-badge">d</div>
+      <span>Donnit · Marketing</span>
+    </div>
+    <span class="kicker">Playbook de viralidad — Agosto 2026</span>
+    <h1>Lo que funcionó, lo que no, y qué grabar esta quincena.</h1>
+    <p class="sub">Análisis de 58 publicaciones + un plan de 10 reels que puedes rodar tú solo, en tu piso.</p>
+  </header>
+
+  <div class="verdict">
+    <span class="eyebrow">El veredicto</span>
+    <p>Tu motor viral <strong>no es "cómo funciona la app"</strong> — es <strong>tu historia como fundador</strong>. Tus 5 mayores éxitos son build-in-public. En julio pivotaste a reels explainer y tu alcance se desplomó. Agosto = volver a la narrativa, estrenar el storytelling de <strong>Moments</strong>, y hacerlo todo grabable en solitario.</p>
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><div class="val">172K</div><div class="lab">views en 2026 (Ene–Ago)</div></div>
+    <div class="metric"><div class="val">55.3K</div><div class="lab">alcance · personas únicas</div></div>
+    <div class="metric"><div class="val">1.568</div><div class="lab">seguidores</div></div>
+    <div class="metric flag"><div class="val">33%</div><div class="lab">de tus views son ADS pagados</div></div>
+  </div>
+
+  <!-- QUÉ FUNCIONÓ -->
+  <section>
+    <div class="section-head">
+      <span class="num">01 — La evidencia</span>
+      <h2>Qué funcionó de verdad</h2>
+      <p class="lede">Tus 8 piezas más vistas. Fíjate en la columna de tipo: la narrativa domina.</p>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Pieza</th><th>Tipo</th><th class="n">Views</th><th class="n">Follows</th><th class="n">Shares</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>"Apple <b>rechazó</b> nuestra app"</td><td><span class="pill story">Build-in-public</span></td><td class="n lead-metric">10.879</td><td class="n">68</td><td class="n">34</td></tr>
+          <tr><td>"El plan era simple / que nada bueno se tire"</td><td><span class="pill story">Fundador</span></td><td class="n lead-metric">10.839</td><td class="n">71</td><td class="n">26</td></tr>
+          <tr><td>"Cuando el <b>founder se obsesiona</b>"</td><td><span class="pill story">Build-in-public</span></td><td class="n">9.148</td><td class="n">22</td><td class="n">9</td></tr>
+          <tr><td>"Dentro de un mes <b>lanzamos</b> esto"</td><td><span class="pill story">Build-in-public</span></td><td class="n">8.800</td><td class="n">11</td><td class="n">4</td></tr>
+          <tr><td>"De construir para otros… a algo propio"</td><td><span class="pill story">Fundador</span></td><td class="n">8.797</td><td class="n">25</td><td class="n">6</td></tr>
+          <tr><td>"Los primeros ya están adentro"</td><td><span class="pill launch">Lanzamiento</span></td><td class="n">8.235</td><td class="n">33</td><td class="n">8</td></tr>
+          <tr><td>"Lanzamiento de Donnit en Barcelona"</td><td><span class="pill launch">Lanzamiento</span></td><td class="n">5.596</td><td class="n">4</td><td class="n">7</td></tr>
+          <tr><td>Carrusel "MAPA" (DM waitlist)</td><td><span class="pill launch">Captación</span></td><td class="n">13.330</td><td class="n">130</td><td class="n">14</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="meta">El carrusel "MAPA" generó <b>130 seguidores</b> — el que más de todos — gracias a un CTA de "DM MAPA". La mecánica de palabra clave es tu palanca de captación más eficiente.</p>
+  </section>
+
+  <!-- QUÉ MATÓ -->
+  <section>
+    <div class="section-head">
+      <span class="num">02 — Los frenos</span>
+      <h2>Qué mató tu alcance</h2>
+    </div>
+    <div class="findings">
+      <div class="finding">
+        <h3><span class="idx">1.</span> El pivote de julio</h3>
+        <p>Mayo–junio (build-in-public): hits de <span class="data">8–11K views</span>. Julio (reels "cómo funciona"): la mayoría entre <span class="data">500–1.400 views</span>. Cambiaste el contenido que te hizo despegar.</p>
+      </div>
+      <div class="finding">
+        <h3><span class="idx">2.</span> Reels de eslogan</h3>
+        <p>Todo lo que quedó por debajo de <span class="data">150 views</span> eran frases bonitas sin historia: "marketplace circular más grande del mundo", "No es publicidad, es Donnit". Cero narrativa, cero alcance.</p>
+      </div>
+      <div class="finding">
+        <h3><span class="idx">3.</span> Reposteo idéntico</h3>
+        <p>"De construir para otros" hizo <span class="data">8.797</span> views el 18 abr… reposteado igual el 3 may → <span class="data">131</span>. El algoritmo penaliza duplicados. Nunca subas el mismo reel dos veces.</p>
+      </div>
+      <div class="finding">
+        <h3><span class="idx">4.</span> Tu diferencial, invisible</h3>
+        <p>De 58 piezas, el <span class="data">100%</span> habla de donar gratis. Cero sobre <b>Moments (alquilar)</b> y cero sobre los <b>créditos de CO₂</b>. Tu mayor ventaja no se ha contado nunca.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCIA -->
+  <section>
+    <div class="section-head">
+      <span class="num">03 — La otra alerta</span>
+      <h2>Tu audiencia no es del todo tu target</h2>
+      <p class="lede">Buscas jóvenes urbanos de Barcelona (20–40). Tus seguidores reales:</p>
+    </div>
+    <div class="metrics">
+      <div class="metric flag"><div class="val">4,7%</div><div class="lab">tiene 18–24 · la Gen Z casi no está</div></div>
+      <div class="metric flag"><div class="val">~68%</div><div class="lab">tiene 35+ · sesgo mayor al target</div></div>
+      <div class="metric flag"><div class="val">~20%</div><div class="lab">está fuera de España (Argentina 10%)</div></div>
+      <div class="metric"><div class="val">44%</div><div class="lab">Barcelona + área metro · el núcleo sí existe</div></div>
+    </div>
+    <p class="meta">El contenido de fundador en español atrae a LatAm y a público mayor. En agosto conviene reforzar señales locales de Barcelona (calles, barrios, catalán puntual, referencias de ciudad) para afinar a quién llegas.</p>
+  </section>
+
+  <!-- AGOSTO: REGLAS DEL JUEGO -->
+  <section>
+    <div class="section-head">
+      <span class="num">04 — El contexto real</span>
+      <h2>Agosto: tus reglas del juego</h2>
+      <p class="lede">Convertimos cada limitación en una decisión de contenido.</p>
+    </div>
+    <div class="adapt">
+      <div class="adapt-row">
+        <div class="have"><span class="dot">🎥</span> Grabas solo (Luca se fue)</div>
+        <div class="do"><b>Formatos de una persona:</b> cámara a trípode a tu cara, POV, voz en off sobre b-roll, screen-record de la app. Nada de sketches de dos.</div>
+      </div>
+      <div class="adapt-row">
+        <div class="have"><span class="dot">🏠</span> Piso chulo decorado</div>
+        <div class="do"><b>Tu set principal.</b> Luz de día, objetos reales a mano. Ideal para el ángulo "cosas que no uso" y para hablar a cámara con calidez.</div>
+      </div>
+      <div class="adapt-row">
+        <div class="have"><span class="dot">🔄</span> Moments aún sin terminar</div>
+        <div class="do"><b>Se cuenta como teaser.</b> La historia de <i>por qué</i> lo añadís es contenido build-in-public puro — tu fórmula ganadora. "El renting llega pronto".</div>
+      </div>
+      <div class="adapt-row">
+        <div class="have"><span class="dot">📖</span> Storytelling sin explotar</div>
+        <div class="do"><b>La veta de oro.</b> Origen, el quedarte solo, el porqué del cambio. Es exactamente lo que te dio 8–11K views.</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:34px;">Reglas de oro para grabar solo</h3>
+    <ul class="rules" style="margin-top:14px;">
+      <li><span class="mk">01</span><span><b>Hook en los primeros 2 seg</b> o pierdes al viewer. Empieza por la frase más fuerte, sin intro.</span></li>
+      <li><span class="mk">02</span><span><b>Subtítulos siempre</b>, grandes. La mayoría ve sin sonido.</span></li>
+      <li><span class="mk">03</span><span><b>Trípode + disparador</b> (o temporizador). Encuadre vertical 9:16, luz natural de ventana.</span></li>
+      <li><span class="mk">04</span><span><b>Una idea por reel.</b> 20–30 seg máximo. Si dudas, córtalo antes.</span></li>
+      <li><span class="mk">05</span><span><b>Color con criterio:</b> pieza de donar → verde; pieza de Moments → turquesa. No los mezcles salvo el reel del flywheel.</span></li>
+    </ul>
+  </section>
+
+  <!-- CALENDARIO -->
+  <section>
+    <div class="section-head">
+      <span class="num">05 — El plan</span>
+      <h2>Calendario de 2 semanas · 10 reels</h2>
+      <p class="lede">Un arco: reactivar con storytelling (Semana 1), estrenar Moments + CO₂ como teaser (Semana 2). Todos grabables solo.</p>
+    </div>
+
+    <div class="legend">
+      <span><i style="background:var(--ink-accent)"></i> Storytelling / fundador</span>
+      <span><i style="background:var(--verde)"></i> Donación</span>
+      <span><i style="background:var(--turquesa)"></i> Moments / alquiler</span>
+      <span><i style="background:linear-gradient(90deg,var(--verde),var(--turquesa))"></i> El flywheel</span>
+    </div>
+
+    <div class="week-tag">Semana 1 · Reactivar con narrativa</div>
+    <div class="cards">
+
+      <article class="card" data-kind="story">
+        <div class="card-top">
+          <div class="card-id"><span class="reel-no">REEL 01</span><span class="tag story">Storytelling</span></div>
+          <span class="meta">Lun · piso · a cámara</span>
+        </div>
+        <h3>La historia que nunca os conté</h3>
+        <div class="meta">Trípode, plano medio, luz de ventana. Tono cercano.</div>
+        <div class="field hook"><span class="k">Hook (0–2s)</span><span class="v">"Nadie sabe por qué empecé Donnit. Y casi lo dejo."</span></div>
+        <div class="field"><span class="k">Guion</span><span class="v script">El momento real: ver algo en perfecto estado tirado en una calle de Barcelona y pensar "esto es una locura". La idea que no te dejaba dormir: que nada bueno se tire. "No empezó como una app. Empezó con una idea."</span></div>
+        <div class="field"><span class="k">Texto en pantalla</span><span class="onscreen">Por qué existe Donnit</span></div>
+        <div class="cta-line"><span class="k">CTA</span><span class="v">"Esto es solo el principio. Descarga Donnit 👇"</span></div>
+        <div class="why"><b>Por qué funciona:</b> es el molde exacto de tus dos mayores hits ("De construir para otros" 8.8K, "founder se obsesiona" 9.1K).</div>
+        <details class="literal">
+          <summary><span class="chev">▶</span> Guion literal · segundo a segundo <span class="dur">0:26</span></summary>
+          <div class="beats">
+            <div class="beat">
+              <div class="tc">0:00–0:03</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> primer plano, tú a cámara, luz de ventana. Sin intro, directo.</div>
+                <div class="dice">"Nadie sabe por qué empecé Donnit. Y te juro que casi lo dejo."</div>
+                <div class="ost">Texto en pantalla: <span>Por qué existe Donnit</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:03–0:09</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> te levantas y caminas por el piso — o corta a b-roll de una calle de Barcelona con un mueble junto al contenedor.</div>
+                <div class="dice">"Un día, aquí en Barcelona, vi un mueble en perfecto estado tirado al lado de la basura."</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:09–0:15</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> vuelves a cámara, un poco más cerca.</div>
+                <div class="dice">"Y pensé: esto es una locura. Alguien a dos calles lo está buscando ahora mismo."</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:15–0:22</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> a cámara, tono más íntimo, bajas la voz.</div>
+                <div class="dice">"Donnit no empezó como una app. Empezó con una idea que no me dejaba dormir: que nada bueno se tire."</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:22–0:26</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> media sonrisa, acercas el móvil con la app abierta.</div>
+                <div class="dice">"Y esto es solo el principio."</div>
+                <div class="ost">Texto en pantalla: <span>Descarga Donnit 👇</span></div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <article class="card" data-kind="story">
+        <div class="card-top">
+          <div class="card-id"><span class="reel-no">REEL 02</span><span class="tag story">Build-in-public</span></div>
+          <span class="meta">Mié · piso o calle · a cámara</span>
+        </div>
+        <h3>Me quedé solo en Barcelona</h3>
+        <div class="meta">Selfie o trípode. Honesto, sin producción. Reactivador de agosto.</div>
+        <div class="field hook"><span class="k">Hook (0–2s)</span><span class="v">"Mi cofundador se fue de Barcelona. Y os voy a ser sincero."</span></div>
+        <div class="field"><span class="k">Guion</span><span class="v script">La realidad de seguir solo: grabar solo, subir el proyecto solo, no parar. "Sigo aquí porque creo en esto — que los objetos circulen en lugar de acumularse." Vulnerabilidad real, sin postureo.</span></div>
+        <div class="field"><span class="k">Texto en pantalla</span><span class="onscreen">Build in public · día real</span></div>
+        <div class="cta-line"><span class="k">CTA</span><span class="v">"Si te suma el viaje, sígueme. Y descarga Donnit."</span></div>
+        <div class="why"><b>Por qué funciona:</b> la vulnerabilidad genera shares — "Apple rechazó" tuvo 34. Rompe el bajón de agosto (90 views/día).</div>
+        <details class="literal">
+          <summary><span class="chev">▶</span> Guion literal · segundo a segundo <span class="dur">0:24</span></summary>
+          <div class="beats">
+            <div class="beat">
+              <div class="tc">0:00–0:03</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> primer plano, tú a cámara. Nada de música fuerte todavía. Mirada directa.</div>
+                <div class="dice">"Mi cofundador se fue de Barcelona. Y os voy a ser sincero."</div>
+                <div class="ost">Texto en pantalla: <span>Build in public · día real</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:03–0:09</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> te giras mientras montas el trípode / colocas el móvil (el propio gesto de grabar solo es el chiste build-in-public).</div>
+                <div class="dice">"Ahora grabo solo, edito solo, subo el proyecto solo."</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:09–0:16</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> vuelves a cámara, tono firme.</div>
+                <div class="dice">"Podría parar. Pero sigo aquí, porque creo en algo: que los objetos circulen en vez de acumularse."</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:16–0:21</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> señalas la ciudad por la ventana, o un objeto del piso.</div>
+                <div class="dice">"Estamos empezando. Aquí, en Barcelona, de vecino a vecino."</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:21–0:24</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> a cámara, media sonrisa.</div>
+                <div class="dice">"Si te suma el viaje, quédate. Vienen cosas."</div>
+                <div class="ost">Texto en pantalla: <span>Sígueme + descarga Donnit</span></div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <article class="card" data-kind="donar">
+        <div class="card-top">
+          <div class="card-id"><span class="reel-no">REEL 03</span><span class="tag donar">Donación</span></div>
+          <span class="meta">Vie · piso · POV / tour</span>
+        </div>
+        <h3>Cosas de MI casa que no uso</h3>
+        <div class="meta">Recorres el piso señalando objetos + screen-record publicando en la app.</div>
+        <div class="field hook"><span class="k">Hook (0–2s)</span><span class="v">"Tengo 7 cosas en este piso que no he tocado en un año."</span></div>
+        <div class="field"><span class="k">Guion</span><span class="v script">Enseñas objetos reales del piso (un aparato, deco, ropa). "Esto no lo uso… pero a un vecino le vendría genial. En vez de que junte polvo, lo publico gratis en Donnit." Muestras lo fácil que es subirlo.</span></div>
+        <div class="field"><span class="k">Texto en pantalla</span><span class="onscreen">Lo que no usas, a alguien le cambia el día</span></div>
+        <div class="cta-line"><span class="k">CTA</span><span class="v">"Descarga Donnit y dona lo primero que no uses 💚"</span></div>
+        <div class="why"><b>Por qué funciona:</b> aprovecha el piso como set, 100% solo, y el ángulo donación ya probado. Verde = donación.</div>
+        <details class="literal">
+          <summary><span class="chev">▶</span> Guion literal · segundo a segundo <span class="dur">0:28</span></summary>
+          <div class="beats">
+            <div class="beat">
+              <div class="tc">0:00–0:03</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> de pie en el salón, brazos abiertos señalando alrededor. Energía alta.</div>
+                <div class="dice">"Tengo 7 cosas en este piso que no toco desde hace un año. Mira."</div>
+                <div class="ost">Texto en pantalla: <span>Cosas que no uso</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:03–0:08</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> caminas y coges el objeto 1 (ej. una cafetera, una lámpara).</div>
+                <div class="dice">"Esta cafetera: la usé dos veces. Cero desde marzo."</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:08–0:13</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> objeto 2 (ej. un ventilador, una mochila). Guiño al calor de agosto.</div>
+                <div class="dice">"Este ventilador, guardado en el armario. Con el calor que hace en Barcelona…"</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:13–0:18</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> coges el objeto y le haces una foto con el móvil (gesto real).</div>
+                <div class="dice">"En vez de que junte polvo, le hago una foto…"</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:18–0:23</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> screen-record de la app publicando el objeto gratis en tu barrio.</div>
+                <div class="dice">"…y aparece gratis para los vecinos de mi barrio. En segundos."</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:23–0:28</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> a cámara, con el objeto en la mano.</div>
+                <div class="dice">"Lo que tú no usas, a alguien le cambia el día."</div>
+                <div class="ost">Texto en pantalla: <span>Descarga Donnit 💚</span></div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <article class="card" data-kind="moments">
+        <div class="card-top">
+          <div class="card-id"><span class="reel-no">REEL 04</span><span class="tag moments">Teaser · puente</span></div>
+          <span class="meta">Dom · piso · a cámara</span>
+        </div>
+        <h3>Donar estaba bien. Pero faltaba algo.</h3>
+        <div class="meta">A cámara, tono reflexivo. Siembra Moments sin revelarlo del todo.</div>
+        <div class="field hook"><span class="k">Hook (0–2s)</span><span class="v">"Donar molaba. Pero había un problema que me quitaba el sueño."</span></div>
+        <div class="field"><span class="k">Guion</span><span class="v script">El insight: a veces no quieres quedarte algo para siempre — solo lo necesitas un finde (una tabla de paddle, un taladro). Donar no bastaba. "Estamos terminando algo que lo cambia todo…" (corte, suspense). "Pronto os lo cuento."</span></div>
+        <div class="field"><span class="k">Texto en pantalla</span><span class="onscreen">Algo nuevo llega a Donnit</span></div>
+        <div class="cta-line"><span class="k">CTA</span><span class="v">"Activa notificaciones. Descarga Donnit."</span></div>
+        <div class="why"><b>Por qué funciona:</b> curiosidad + build-in-public. Prepara el reveal de Semana 2 sin prometer una función activa.</div>
+        <details class="literal">
+          <summary><span class="chev">▶</span> Guion literal · segundo a segundo <span class="dur">0:22</span></summary>
+          <div class="beats">
+            <div class="beat">
+              <div class="tc">0:00–0:03</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> sentado, a cámara, tono más serio y bajo. Sin sonrisa.</div>
+                <div class="dice">"Donar molaba. Pero había algo que me quitaba el sueño."</div>
+                <div class="ost">Texto en pantalla: <span>Donar no bastaba…</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:03–0:10</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> a cámara, gesto pensativo. Enumeras con los dedos.</div>
+                <div class="dice">"A veces no quieres quedarte algo para siempre. Solo lo necesitas un finde: una tabla de paddle, un taladro…"</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:10–0:16</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> te acercas a cámara.</div>
+                <div class="dice">"Comprarlo es absurdo. Pero donarlo tampoco encaja. Faltaba una pieza."</div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:16–0:20</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> media sonrisa, suspense. Bajas la voz.</div>
+                <div class="dice">"Estamos terminando algo que lo cambia todo. Pronto os lo cuento."</div>
+                <div class="ost">Texto en pantalla: <span>Algo nuevo llega a Donnit</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="tc">0:20–0:22</div>
+              <div class="beat-body">
+                <div class="plano"><b>Plano:</b> a cámara, señalas hacia abajo.</div>
+                <div class="dice">"Activa las notificaciones."</div>
+                <div class="ost">Texto en pantalla: <span>Descarga Donnit</span></div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </article>
+    </div>
+
+    <div class="week-tag" style="margin-top:32px;">Semana 2 · El reveal de Moments + CO₂</div>
+    <div class="cards">
+
+      <article class="card" data-kind="moments">
+        <div class="card-top">
+          <div class="card-id"><span class="reel-no">REEL 05</span><span class="tag moments">Moments</span></div>
+          <span class="meta">Lun · piso · a cámara</span>
+        </div>
+        <h3>Por qué añadimos ALQUILAR a Donnit</h3>
+        <div class="meta">A cámara. El reveal honesto de la decisión. Tu historia sin contar.</div>
+        <div class="field hook"><span class="k">Hook (0–2s)</span><span class="v">"Empezamos con donar. Ahora vas a poder alquilar. Y este es el motivo real."</span></div>
+        <div class="field"><span class="k">Guion</span><span class="v script">No todo el mundo quiere regalar sus cosas; ni quedarse lo que solo necesita un día. Alquilar entre vecinos —Moments— completa el círculo. Barato, local, sostenible. "El renting llega pronto a Donnit."</span></div>
+        <div class="field"><span class="k">Texto en pantalla</span><span class="onscreen">Moments · alquila entre vecinos · pronto</span></div>
+        <div class="cta-line"><span class="k">CTA</span><span class="v">"Descarga Donnit ya — el alquiler llega pronto 👇"</span></div>
+        <div class="why"><b>Por qué funciona:</b> es LA historia build-in-public que nunca has contado. Diferencial puro. Turquesa = alquiler.</div>
+      </article>
+
+      <article class="card" data-kind="bridge">
+        <div class="card-top">
+          <div class="card-id"><span class="reel-no">REEL 06</span><span class="tag bridge">El flywheel</span></div>
+          <span class="meta">Mié · piso · a cámara + screen-record</span>
+        </div>
+        <h3>El truco: donar te hace alquilar más barato</h3>
+        <div class="meta">La única pieza donde verde y turquesa se combinan a propósito.</div>
+        <div class="field hook"><span class="k">Hook (0–2s)</span><span class="v">"Donar en Donnit te va a hacer ahorrar cuando alquiles. Te lo explico en 20 seg."</span></div>
+        <div class="field"><span class="k">Guion</span><span class="v script">Donas algo <b>(🟢)</b> → ganas créditos de CO₂ (evitas fabricar algo nuevo) → gastas esos créditos para alquilar más barato <b>(🟩)</b> → repites. "Dona lo que no usas, alquila lo que necesitas."</span></div>
+        <div class="field"><span class="k">Texto en pantalla</span><span class="onscreen">Donas 🟢 → Créditos CO₂ → Alquilas más barato 🟩</span></div>
+        <div class="cta-line"><span class="k">CTA</span><span class="v">"El alquiler llega pronto. Empieza donando: descarga Donnit."</span></div>
+        <div class="why"><b>Por qué funciona:</b> explica tu mecánica única, nunca contada. Es el corazón de la marca.</div>
+      </article>
+
+      <article class="card" data-kind="donar">
+        <div class="card-top">
+          <div class="card-id"><span class="reel-no">REEL 07</span><span class="tag donar">Donación · historia</span></div>
+          <span class="meta">Jue · calle/piso · b-roll + voz en off</span>
+        </div>
+        <h3>Esto iba a la basura</h3>
+        <div class="meta">B-roll de un objeto concreto + tu voz en off. Grabable solo.</div>
+        <div class="field hook"><span class="k">Hook (0–2s)</span><span class="v">"Esto lo iban a tirar. Y no, no estaba roto."</span></div>
+        <div class="field"><span class="k">Guion</span><span class="v script">Un objeto real, su rescate, el vecino que lo quería a pocos metros. Emoción + local. "Antes de tirar algo, mira si alguien de tu barrio lo necesita."</span></div>
+        <div class="field"><span class="k">Texto en pantalla</span><span class="onscreen">De vecino a vecino</span></div>
+        <div class="cta-line"><span class="k">CTA</span><span class="v">"Antes de tirar algo, míralo en Donnit 💚"</span></div>
+        <div class="why"><b>Por qué funciona:</b> tu "El plan era simple" (10.8K, 230 likes) es historia + objeto. Alta emoción, rodable en solitario.</div>
+      </article>
+
+      <article class="card" data-kind="donar">
+        <div class="card-top">
+          <div class="card-id"><span class="reel-no">REEL 08</span><span class="tag donar">Donación · ahorro</span></div>
+          <span class="meta">Vie · piso · a cámara + producto</span>
+        </div>
+        <h3>66€ en Amazon… o gratis del vecino</h3>
+        <div class="meta">Muestras un objeto y su precio nuevo vs. gratis en Donnit cerca.</div>
+        <div class="field hook"><span class="k">Hook (0–2s)</span><span class="v">"Esto cuesta 66€ nuevo. O 0€ del vecino de al lado."</span></div>
+        <div class="field"><span class="k">Guion</span><span class="v script">Refrescas el ángulo ahorro con un objeto concreto. Muestras el mismo objeto disponible gratis en tu barrio en la app. Sin pagar, sin envíos, sin salir de tu calle.</span></div>
+        <div class="field"><span class="k">Texto en pantalla</span><span class="onscreen">Nuevo: 66€ · En Donnit: gratis</span></div>
+        <div class="cta-line"><span class="k">CTA</span><span class="v">"Descarga Donnit (App Store y Google Play)"</span></div>
+        <div class="why"><b>Por qué funciona:</b> ahorro concreto = engancha a tu target (ahorrar dinero y espacio). Un hook fuerte sube tu versión previa (1.3K).</div>
+      </article>
+
+      <article class="card" data-kind="moments">
+        <div class="card-top">
+          <div class="card-id"><span class="reel-no">REEL 09</span><span class="tag moments">Moments · teaser</span></div>
+          <span class="meta">Sáb · piso · montaje b-roll</span>
+        </div>
+        <h3>Pronto no solo donas. Alquilas.</h3>
+        <div class="meta">Montaje rápido de objetos "de alquiler": paddle, taladro, tienda de campaña.</div>
+        <div class="field hook"><span class="k">Hook (0–2s)</span><span class="v">"¿Comprar una tabla de paddle para usarla 2 días? Qué locura."</span></div>
+        <div class="field"><span class="k">Guion</span><span class="v script">Presentas Moments: alquila por poco tiempo lo que necesitas, barato y del vecino. Ejemplos veraniegos de Barcelona (playa, montaña). "Llega pronto a Donnit."</span></div>
+        <div class="field"><span class="k">Texto en pantalla</span><span class="onscreen">Moments · alquila lo que necesitas · pronto 🟩</span></div>
+        <div class="cta-line"><span class="k">CTA</span><span class="v">"Descarga Donnit y sé el primero cuando se active."</span></div>
+        <div class="why"><b>Por qué funciona:</b> teaser de la función que estás terminando; genera lista de espera y expectativa. Estacional (verano).</div>
+      </article>
+
+      <article class="card" data-kind="donar">
+        <div class="card-top">
+          <div class="card-id"><span class="reel-no">REEL 10</span><span class="tag donar">Captación · cierre</span></div>
+          <span class="meta">Dom · piso · a cámara, directo</span>
+        </div>
+        <h3>Comenta DONNIT</h3>
+        <div class="meta">Energético, mirando a cámara. Cierra la quincena convirtiendo alcance en seguidores.</div>
+        <div class="field hook"><span class="k">Hook (0–2s)</span><span class="v">"Si vives en Barcelona, esto es para ti."</span></div>
+        <div class="field"><span class="k">Guion</span><span class="v script">Recap simple: dona lo que no usas, gana créditos, y pronto alquila lo que necesitas. Todo entre vecinos. Llamada directa a la acción con mecánica de palabra clave.</span></div>
+        <div class="field"><span class="k">Texto en pantalla</span><span class="onscreen">Comenta DONNIT y te paso el enlace</span></div>
+        <div class="cta-line"><span class="k">CTA</span><span class="v">"Comenta DONNIT 👇 o descárgala desde la bio."</span></div>
+        <div class="why"><b>Por qué funciona:</b> la mecánica "comenta / DM palabra clave" te dio 130 y 33 follows. Es tu mejor conversor de views → seguidores.</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- STOP DOING -->
+  <section>
+    <div class="section-head">
+      <span class="num">06 — Higiene</span>
+      <h2>Qué dejar de hacer, ya</h2>
+    </div>
+    <div class="findings">
+      <div class="finding stop"><h3>Reposteo idéntico</h3><p>Nunca vuelvas a subir el mismo reel. Si quieres reutilizar un ángulo, regrábalo con otro hook.</p></div>
+      <div class="finding stop"><h3>Reels de eslogan</h3><p>Frases bonitas sin historia = por debajo de 150 views. Cada pieza necesita un gancho o un relato.</p></div>
+      <div class="finding stop"><h3>Intros lentas</h3><p>Sin logo ni "hola" al principio. La frase más fuerte, en el segundo 0.</p></div>
+      <div class="finding stop"><h3>Prometer Moments activo</h3><p>El alquiler es teaser: "llega pronto". El CTA de descarga siempre va a la app actual (donar).</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Donnit · Playbook de Viralidad — Agosto 2026.</strong> Basado en el análisis de 58 publicaciones de @donnit.app (Ene–Ago 2026) y en las reglas de marca. Objetivo: viralidad → descargas de la app. Colores con criterio — verde para donar, turquesa para Moments.</p>
+  </footer>
+
+</div>
