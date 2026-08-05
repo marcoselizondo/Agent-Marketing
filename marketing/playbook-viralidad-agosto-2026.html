@@ -279,6 +279,20 @@
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
   .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
 
+  /* Profile compare */
+  .compare { display: grid; gap: 12px; margin-top: 18px; }
+  @media (min-width: 620px) { .compare { grid-template-columns: 1fr 1fr; align-items: start; } }
+  .biobox { border-radius: 14px; padding: 16px 18px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+  .biobox .tag2 { font-size: .7rem; text-transform: uppercase; letter-spacing: .11em; font-weight: 750; margin-bottom: 12px; display: block; }
+  .biobox.now .tag2 { color: var(--muted); }
+  .biobox.next { border-color: color-mix(in srgb, var(--verde) 50%, var(--line)); background: color-mix(in srgb, var(--verde) 8%, var(--surface)); }
+  .biobox.next .tag2 { color: var(--verde-deep); }
+  .biobox .fld { font-size: .68rem; color: var(--muted); margin: 12px 0 4px; text-transform: uppercase; letter-spacing: .08em; font-weight: 750; }
+  .biobox .fld:first-of-type { margin-top: 0; }
+  .biobox pre { margin: 0; font-family: inherit; white-space: pre-wrap; font-size: .96rem; line-height: 1.5; color: var(--ink); }
+  .biobox .link { color: var(--turquesa-deep); font-weight: 650; }
+  .biobox .strike { color: var(--muted); text-decoration: line-through; }
+
   .stop { border-left-color: var(--warn); }
   footer { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
 
@@ -758,10 +772,74 @@
     </div>
   </section>
 
+  <!-- PERFIL -->
+  <section>
+    <div class="section-head">
+      <span class="num">06 — Conversión</span>
+      <h2>Optimiza tu perfil</h2>
+      <p class="lede">La palanca gratis y de impacto inmediato: tus reels traen visitas al perfil, pero el perfil no las convierte en seguidores. Aquí está la fuga.</p>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><div class="val">1.567</div><div class="lab">seguidores</div></div>
+      <div class="metric flag"><div class="val">737</div><div class="lab">seguidos · demasiados para una marca</div></div>
+      <div class="metric"><div class="val">38</div><div class="lab">publicaciones</div></div>
+      <div class="metric flag"><div class="val">1</div><div class="lab">destacado · deberían ser 4–5</div></div>
+    </div>
+
+    <h3 style="margin-top:34px;">Nombre + bio: ahora vs. propuesta</h3>
+    <div class="compare">
+      <div class="biobox now">
+        <span class="tag2">Ahora</span>
+        <div class="fld">Nombre (buscable)</div>
+        <pre>Donnit App</pre>
+        <div class="fld">Bio</div>
+        <pre>No lo tires, ¡Donnit! 💚
+Da y recibe objetos entre vecinos
+👇 Descárgala gratis</pre>
+        <div class="fld">Enlace</div>
+        <pre class="strike">linktr.ee/donnitapp</pre>
+      </div>
+      <div class="biobox next">
+        <span class="tag2">Propuesta</span>
+        <div class="fld">Nombre (buscable · máx 30)</div>
+        <pre>Donnit · Objetos gratis BCN</pre>
+        <div class="fld">Bio</div>
+        <pre>♻️ Da y recibe objetos GRATIS entre vecinos
+📍 Barcelona · de vecino a vecino
+🔜 Alquilar (Moments) llega pronto
+👇 Descarga la app</pre>
+        <div class="fld">Enlace</div>
+        <pre class="link">Link directo a las stores (detecta iOS/Android)</pre>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px;">Por qué estos cambios</h3>
+    <ul class="rules" style="margin-top:14px;">
+      <li><span class="mk">01</span><span><b>El campo "Nombre" lo indexa el buscador de Instagram.</b> "Donnit App" no lo busca nadie. Con keywords ("objetos gratis", "BCN") apareces cuando buscan segunda mano en Barcelona.</span></li>
+      <li><span class="mk">02</span><span><b>La bio no menciona Barcelona.</b> Eres una app hiperlocal y no dices dónde — por eso atraes seguidores de fuera (recuerda: 20% no está en España). Poner 📍 Barcelona filtra al seguidor correcto.</span></li>
+      <li><span class="mk">03</span><span><b>Siembra Moments en la bio.</b> "🔜 Alquilar llega pronto" convierte tu perfil en un teaser permanente de tu diferencial.</span></li>
+      <li><span class="mk">04</span><span><b>Linktree añade fricción.</b> Un clic extra y una pantalla intermedia antes de descargar. Un link directo que detecta el móvil lleva a la store en un toque — más descargas.</span></li>
+      <li><span class="mk">05</span><span><b>Sigues a 737 cuentas.</b> En una marca verificada, un ratio así lee como follow/unfollow y resta credibilidad. Bájalo a &lt;100 y deja de seguir por seguir.</span></li>
+    </ul>
+
+    <h3 style="margin-top:32px;">Destacados y fijados</h3>
+    <div class="findings" style="margin-top:14px;">
+      <div class="finding" style="border-left-color:var(--verde-deep);">
+        <h3>Crea 5 destacados</h3>
+        <p>Hoy tienes 1 ("Descarga 💚"). Añade: <b>Cómo funciona</b> · <b>Historias / Tesoros</b> (rescates reales) · <b>Moments 🔜</b> · <b>Barrios BCN</b> · <b>Prensa</b>. Son lo que convence al que duda.</p>
+      </div>
+      <div class="finding" style="border-left-color:var(--verde-deep);">
+        <h3>Arregla el 3er fijado</h3>
+        <p>Tienes fijados dos hits (10.8 mil) y uno flojo ("Barcelona no reutiliza", 1.187). Cámbialo por <b>"Se montó una oficina"</b> (9.148) o <b>"Dentro de un mes lanzamos"</b> (8.800).</p>
+      </div>
+    </div>
+  </section>
+
   <!-- STOP DOING -->
   <section>
     <div class="section-head">
-      <span class="num">06 — Higiene</span>
+      <span class="num">07 — Higiene</span>
       <h2>Qué dejar de hacer, ya</h2>
     </div>
     <div class="findings">
