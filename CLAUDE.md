@@ -59,6 +59,7 @@ CTA de descargar es siempre a la app actual.
 **Núcleo de viralidad:** referrals · marketing-loops · social · video · marketing-psychology
 **Amplificadores:** launch · content-strategy · influencer-marketing · community-marketing · copywriting · marketing-ideas
 **Creatividad:** ad-creative · image
+**App / ASO:** aso
 **Estrategia:** marketing-council · marketing-plan
 **Medición y optimización:** analytics · attribution · ab-testing · cro
 
