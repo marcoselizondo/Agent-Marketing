@@ -10,9 +10,10 @@ para que los objetos que no se usan tengan una segunda vida en lugar de acabar e
 la basura. Ya está **viva en iOS y Android** con la función de **DONAR** objetos
 gratis entre vecinos.
 
-Nueva función en camino: **ALQUILAR** objetos entre vecinos ("Moments") — rentar
-lo que necesitas por poco tiempo (tabla de paddle, taladro, tienda de campaña) en
-vez de comprarlo. Barato, local y sostenible.
+Función **ya disponible** (lanzamiento ago-2026): **ALQUILAR** objetos entre
+vecinos ("Moments") — rentar lo que necesitas por poco tiempo (tabla de paddle,
+taladro, tienda de campaña) en vez de comprarlo. Barato, local y sostenible.
+Disponible en iOS y Android.
 
 ## Mecánica clave (el gancho del mensaje)
 Donar y alquilar se conectan por el **CO₂**:
@@ -43,9 +44,9 @@ nada corporativo**.
 - Máx **20–30 seg**.
 
 ## CTA (cierre de cada pieza)
-**"Descarga Donnit"** — la app YA está en App Store y Google Play. Si la pieza
-habla del alquiler, aclarar que **"el renting llega pronto"** (teaser), pero el
-CTA de descargar es siempre a la app actual.
+**"Descarga Donnit"** — la app está en App Store y Google Play, e incluye
+**donar** (gratis) y **alquilar** (Moments), ambas funciones **ya activas**.
+El CTA de cada pieza es siempre descargar la app.
 
 ## No hacer
 - No prometer funciones inexistentes como si estuvieran activas.
