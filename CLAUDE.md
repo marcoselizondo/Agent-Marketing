@@ -5,10 +5,10 @@ Objetivo global: **viralidad → descargas de la app**. Las skills instaladas en
 `.claude/skills/` deben usarse SIEMPRE respetando el brief de marca de abajo.
 
 ## Qué es Donnit
-App de **economía circular hiperlocal por barrios** (Barcelona). Conecta vecinos
-para que los objetos que no se usan tengan una segunda vida en lugar de acabar en
-la basura. Ya está **viva en iOS y Android** con la función de **DONAR** objetos
-gratis entre vecinos.
+App de **economía circular hiperlocal por barrios**, disponible en **toda España**
+(base y sede en Barcelona). Conecta vecinos para que los objetos que no se usan
+tengan una segunda vida en lugar de acabar en la basura. Ya está **viva en iOS y
+Android** con la función de **DONAR** objetos gratis entre vecinos.
 
 Función **ya disponible** (lanzamiento ago-2026): **ALQUILAR** objetos entre
 vecinos ("Moments") — rentar lo que necesitas por poco tiempo (tabla de paddle,
@@ -23,24 +23,24 @@ Donar y alquilar se conectan por el **CO₂**:
 - Mensaje simple: **"Dona lo que no usas, alquila lo que necesitas."**
 
 ## Audiencia
-Gente joven urbana de Barcelona (20–40), consciente del consumo, que odia acumular
-trastos y quiere ahorrar dinero y espacio. Tono **cercano, de vecino a vecino,
-nada corporativo**.
+Gente joven urbana de España (20–40) —Barcelona, Madrid, Valencia, Sevilla…—,
+consciente del consumo, que odia acumular trastos y quiere ahorrar dinero y
+espacio. Tono **cercano, de vecino a vecino, nada corporativo**.
 
 ## Reglas de marca (visuales)
 - **Colores:** VERDE `#8fd678` = donación / impacto / gratis. TURQUESA `#52B788`
   = alquiler / pago. **NUNCA mezclar sin criterio**: clip sobre donar → verde;
   clip sobre alquilar → turquesa.
 - Tipografía limpia y redondeada: **DM Sans / Inter**.
-- Estética: luminosa, natural, urbana-mediterránea (calles de Barcelona, luz de
-  día, verde). Nada oscuro ni frío.
+- Estética: luminosa, natural, urbana-mediterránea (calles de tu ciudad —Barcelona
+  es la base de rodaje—, luz de día, verde). Nada oscuro ni frío.
 - Logo Donnit al inicio o cierre, nunca tapando la acción.
 
 ## Reglas de video (Reels / TikTok / Shorts, 9:16 vertical)
 - Ritmo ágil; **primeros 2 seg = hook** o pierdes al viewer.
 - **Subtítulos SIEMPRE** (mayoría ve sin sonido), grandes y legibles.
 - Música trend/energética sin tapar la voz.
-- Objetos reales y calles reconocibles de Barcelona.
+- Objetos reales y calles reconocibles (Barcelona como base; vale cualquier ciudad española).
 - Máx **20–30 seg**.
 
 ## CTA (cierre de cada pieza)
