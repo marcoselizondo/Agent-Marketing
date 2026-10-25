@@ -1,0 +1,1067 @@
+<title>Donnit · Guiones de noviembre</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400..800&display=swap">
+<style>
+  /* Layout: una columna de lectura tipo guion de rodaje. Cada reel es una ficha con
+     claqueta de color según la función (verde donar, turquesa Moments, ambos solo en el ciclo completo). */
+  :root {
+    --ground: #f5f9f2;
+    --surface: #ffffff;
+    --surface-2: #edf3e8;
+    --ink: #15241b;
+    --ink-soft: #3d5044;
+    --muted: #5f7265;
+    --line: #dbe5d4;
+    --verde: #8fd678;
+    --verde-ink: #367a24;
+    --turquesa: #52B788;
+    --turquesa-ink: #23714f;
+    --callout-bg: #1d3628;
+    --callout-ink: #eef6ea;
+    --callout-accent: #8fd678;
+    --sub-bg: #15241b;
+    --sub-ink: #ffffff;
+    --fill-bg: #fff0b8;
+    --fill-ink: #614600;
+    --font: "DM Sans", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --radius: 16px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0d1611; --surface: #131e18; --surface-2: #18271f;
+      --ink: #e9f2e5; --ink-soft: #b6c7bb; --muted: #8b9b90; --line: #263a2e;
+      --verde: #9bdd85; --verde-ink: #9bdd85; --turquesa: #63c99a; --turquesa-ink: #6fd3a5;
+      --callout-bg: #0a120e; --callout-ink: #e9f2e5; --callout-accent: #9bdd85;
+      --sub-bg: #e9f2e5; --sub-ink: #0d1611;
+      --fill-bg: #45380f; --fill-ink: #f6dc85;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0d1611; --surface: #131e18; --surface-2: #18271f;
+    --ink: #e9f2e5; --ink-soft: #b6c7bb; --muted: #8b9b90; --line: #263a2e;
+    --verde: #9bdd85; --verde-ink: #9bdd85; --turquesa: #63c99a; --turquesa-ink: #6fd3a5;
+    --callout-bg: #0a120e; --callout-ink: #e9f2e5; --callout-accent: #9bdd85;
+    --sub-bg: #e9f2e5; --sub-ink: #0d1611;
+    --fill-bg: #45380f; --fill-ink: #f6dc85;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 780px; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 0 96px;
+  }
+  h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance; }
+  h2 { font-size: clamp(1.45rem, 4.6vw, 1.95rem); font-weight: 800; }
+  h3 { font-size: 1.22rem; font-weight: 780; }
+  p { margin: 0; }
+  a { color: var(--turquesa-ink); }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--turquesa); outline-offset: 3px; border-radius: 6px;
+  }
+  .mono { font-family: var(--mono); font-weight: 500; }
+  .k {
+    display: block; font-size: .7rem; font-weight: 750; letter-spacing: .11em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .eyebrow {
+    font-size: .74rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--verde-ink);
+  }
+  .lede { color: var(--ink-soft); max-width: 62ch; }
+  section { margin-top: 56px; }
+
+  /* Datos a rellenar */
+  .fill {
+    background: var(--fill-bg); color: var(--fill-ink); border-radius: 5px;
+    padding: 0 4px; font-weight: 700; white-space: nowrap;
+  }
+
+  /* Cabecera */
+  .masthead { padding-top: 56px; display: grid; gap: 14px; }
+  .logo-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .logo-badge {
+    width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+    background: var(--verde); color: #10230f; font-weight: 800; font-size: 1.35rem;
+  }
+  .logo-row span { font-weight: 780; }
+  .kicker { font-size: .84rem; font-weight: 700; color: var(--turquesa-ink); }
+  .masthead h1 { font-size: clamp(2.1rem, 7.6vw, 3.25rem); font-weight: 800; }
+  .masthead .dek { font-size: 1.1rem; color: var(--ink-soft); max-width: 46ch; }
+
+  .callout {
+    margin-top: 36px; background: var(--callout-bg); color: var(--callout-ink);
+    border-radius: var(--radius); padding: 24px; display: grid; gap: 10px;
+  }
+  .callout .eyebrow { color: var(--callout-accent); }
+  .callout p { font-size: 1.1rem; line-height: 1.5; }
+  .callout b { color: var(--callout-accent); }
+
+  /* Reglas */
+  .rules { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
+  .rules li {
+    background: var(--surface-2); border-radius: 12px; padding: 13px 16px;
+    color: var(--ink-soft); font-size: .97rem;
+  }
+  .rules li b { color: var(--ink); }
+
+  /* Calendario */
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 16px; font-size: .84rem; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+  .table-scroll { overflow-x: auto; margin-top: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: .93rem; }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th {
+    background: var(--surface-2); font-size: .7rem; font-weight: 750; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.date { white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 650; }
+  td a { color: var(--ink); text-decoration: none; font-weight: 650; }
+  td a:hover { text-decoration: underline; }
+  td a .mono { color: var(--muted); margin-right: 4px; }
+  td.reason { color: var(--ink-soft); }
+  tr.gap td { color: var(--muted); font-style: italic; background: var(--surface-2); }
+
+  .tag {
+    display: inline-block; font-size: .7rem; font-weight: 750; letter-spacing: .02em;
+    padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+  }
+  .tag.donar { background: color-mix(in srgb, var(--verde) 26%, transparent); color: var(--verde-ink); }
+  .tag.moments { background: color-mix(in srgb, var(--turquesa) 22%, transparent); color: var(--turquesa-ink); }
+  .tag.bridge {
+    background: linear-gradient(90deg, color-mix(in srgb, var(--verde) 26%, transparent), color-mix(in srgb, var(--turquesa) 26%, transparent));
+    color: var(--ink);
+  }
+
+  /* Semanas */
+  .week-head { display: grid; gap: 8px; margin-bottom: 22px; }
+  .reels { display: grid; gap: 22px; }
+  .rerecord {
+    border: 1px dashed var(--line); border-radius: var(--radius); padding: 18px 20px;
+    display: grid; gap: 10px; color: var(--ink-soft);
+  }
+  .rerecord b { color: var(--ink); }
+
+  /* Ficha de reel */
+  .reel {
+    --c1: var(--turquesa); --c2: var(--turquesa); --dialog: var(--turquesa);
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; padding: 0 20px 20px; display: grid; gap: 14px; min-width: 0;
+    scroll-margin-top: 16px;
+  }
+  .reel[data-kind="donar"] { --c1: var(--verde); --c2: var(--verde); --dialog: var(--verde); }
+  .reel[data-kind="bridge"] { --c1: var(--verde); --c2: var(--turquesa); --dialog: var(--turquesa); }
+  /* La claqueta: franjas diagonales en el color de la función */
+  .slate {
+    height: 12px; margin: 0 -20px;
+    background: repeating-linear-gradient(-45deg, var(--c1) 0 14px, var(--ink) 14px 22px, var(--c2) 22px 36px, var(--ink) 36px 44px);
+  }
+  .reel-head { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; padding-top: 4px; }
+  .reel-id { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .reel-no {
+    font-family: var(--mono); font-weight: 500; font-size: .8rem; letter-spacing: .04em;
+    border: 1px solid var(--line); background: var(--surface-2); border-radius: 7px; padding: 2px 8px;
+  }
+  .reel-dur { font-family: var(--mono); font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .reel-meta { font-size: .86rem; color: var(--muted); margin-top: -8px; }
+
+  .hook { background: var(--surface-2); border-radius: 12px; padding: 14px 16px; display: grid; gap: 10px; }
+  .hook dl { margin: 0; display: grid; gap: 8px; }
+  .hook dl > div { display: grid; grid-template-columns: 92px 1fr; gap: 10px; align-items: baseline; }
+  .hook dt { font-size: .78rem; color: var(--muted); font-weight: 650; }
+  .hook dd { margin: 0; color: var(--ink-soft); font-size: .95rem; min-width: 0; }
+  .hook dd.hook-line { color: var(--ink); font-weight: 750; font-size: 1.06rem; line-height: 1.35; }
+
+  /* Subtítulo tal como se verá en el reel */
+  .sub {
+    display: inline; background: var(--sub-bg); color: var(--sub-ink);
+    font-weight: 750; font-size: .9rem; line-height: 1.75; padding: 2px 8px; border-radius: 6px;
+    box-shadow: inset 0 -3px 0 var(--dialog);
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  .sub .fill { background: var(--fill-bg); color: var(--fill-ink); }
+
+  .literal { border-top: 1px solid var(--line); padding-top: 12px; }
+  .literal > summary {
+    cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px;
+    font-weight: 750; font-size: .86rem; color: var(--turquesa-ink); user-select: none;
+  }
+  .reel[data-kind="donar"] .literal > summary { color: var(--verde-ink); }
+  .literal > summary::-webkit-details-marker { display: none; }
+  .literal > summary .chev { font-size: .66rem; transition: transform .2s ease; }
+  .literal[open] > summary .chev { transform: rotate(90deg); }
+  .literal > summary .dur { margin-left: auto; font-family: var(--mono); font-weight: 400; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .literal > summary .chev { transition: none; } }
+
+  .beats { list-style: none; margin: 12px 0 0; padding: 0; display: grid; }
+  .beat {
+    display: grid; grid-template-columns: 84px 1fr; gap: 12px;
+    padding: 12px 0; border-bottom: 1px dashed var(--line);
+  }
+  .beat:last-child { border-bottom: none; padding-bottom: 0; }
+  .tc { font-family: var(--mono); font-size: .76rem; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .beat-body { display: grid; gap: 7px; min-width: 0; }
+  .plano { font-size: .85rem; color: var(--muted); }
+  .plano b { color: var(--ink-soft); font-weight: 700; }
+  .dice {
+    font-size: 1rem; font-weight: 650; color: var(--ink); line-height: 1.42;
+    border-left: 3px solid var(--dialog); padding-left: 11px;
+  }
+  .action { font-size: .9rem; color: var(--ink-soft); font-style: italic; }
+  .ost { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+  .ost-k { font-size: .72rem; color: var(--muted); font-weight: 650; }
+
+  .cta-line { display: flex; gap: 10px; align-items: baseline; border-top: 1px dashed var(--line); padding-top: 12px; }
+  .cta-line .k { flex: none; }
+  .cta-line .v { font-weight: 700; }
+
+  .copy-block { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .copy-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 8px 10px 8px 14px; background: var(--surface-2); border-bottom: 1px solid var(--line);
+  }
+  .copy-btn {
+    font: inherit; font-size: .82rem; font-weight: 700; cursor: pointer;
+    background: var(--surface); color: var(--ink); border: 1px solid var(--line);
+    border-radius: 8px; padding: 6px 12px;
+  }
+  .copy-btn:hover { border-color: var(--muted); }
+  .copy {
+    margin: 0; padding: 14px; white-space: pre-wrap; word-wrap: break-word;
+    font-family: var(--font); font-size: .93rem; line-height: 1.55; color: var(--ink);
+  }
+
+  .extras { display: grid; gap: 14px; }
+  @media (min-width: 640px) { .extras { grid-template-columns: 1fr 1fr; } .extras .prep { grid-column: 1 / -1; } }
+  .extra { display: grid; gap: 6px; align-content: start; min-width: 0; }
+  .extra p { font-size: .92rem; color: var(--ink-soft); }
+  .alts { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: .93rem; color: var(--ink); font-weight: 600; }
+  .extra.prep { background: color-mix(in srgb, var(--fill-bg) 55%, transparent); border-radius: 10px; padding: 12px 14px; }
+  .extra.prep p { color: var(--ink); }
+
+  /* Listas finales */
+  .checklist { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 8px; }
+  .checklist li {
+    display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start;
+    font-size: .97rem; color: var(--ink-soft);
+  }
+  .checklist li::before {
+    content: ""; width: 16px; height: 16px; margin-top: 4px; border-radius: 4px;
+    border: 2px solid var(--verde-ink);
+  }
+  .checklist b { color: var(--ink); }
+  .measure { display: grid; gap: 12px; margin-top: 20px; }
+  @media (min-width: 640px) { .measure { grid-template-columns: 1fr 1fr; } }
+  .measure > div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; min-width: 0; }
+  .measure h3 { font-size: 1rem; }
+  .measure p { font-size: .92rem; color: var(--ink-soft); }
+  .code-scroll { overflow-x: auto; background: var(--surface-2); border-radius: 8px; padding: 8px 10px; }
+  .code-scroll code { font-family: var(--mono); font-size: .78rem; white-space: pre; color: var(--ink); }
+
+  footer { margin-top: 72px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; display: grid; gap: 8px; }
+
+  @media (max-width: 460px) {
+    .reel { padding: 0 16px 18px; }
+    .slate { margin: 0 -16px; }
+    .hook dl > div { grid-template-columns: 1fr; gap: 2px; }
+    .beat { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="logo-row">
+      <div class="logo-badge" aria-hidden="true">d</div>
+      <span>Donnit · Marketing</span>
+    </div>
+    <span class="kicker">Guiones de Instagram · 26 oct – 6 dic 2026</span>
+    <h1>Diez reels para rodar de Halloween al puente de diciembre.</h1>
+    <p class="dek">Cada guion va segundo a segundo, con el copy del post listo para pegar y dos hooks alternativos para testear. Todos se graban con una sola persona.</p>
+  </header>
+
+  <div class="callout">
+    <span class="eyebrow">La idea de esta tanda</span>
+    <p>En agosto contamos que Moments estaba a punto de llegar. <b>Ya está activo</b> y Donnit funciona <b>en toda España</b>, así que ahora toca enseñarlo funcionando: vecinos reales, precios reales y fechas que todo el mundo tiene en el calendario.</p>
+    <p>Cada reel resuelve algo de esa semana (el disfraz, el cambio de armario, el Black Friday, el puente) y está escrito para que alguien lo reenvíe por DM a su compi de piso o a su grupo de amigos.</p>
+  </div>
+
+  <section>
+    <div class="week-head">
+      <span class="eyebrow">Antes de grabar</span>
+      <h2>Cómo está escrito cada guion</h2>
+    </div>
+    <ul class="rules">
+      <li><b>Tres ganchos en el segundo 0:</b> lo que se ve, lo que se dice y el texto en pantalla. Cada ficha los separa. Sin logo y sin «hola» al principio.</li>
+      <li><b>Pensado para enviarse.</b> Instagram ha dicho que los envíos por DM son de las señales que más pesan para llegar a gente que no te sigue. Por eso cada copy incluye un «envíaselo a…» o una pregunta.</li>
+      <li><b>Una señal de España en cada reel:</b> una fecha de aquí, una calle reconocible o palabras como finde, piso o compi. En agosto, uno de cada cinco seguidores estaba fuera de España; esto acerca el contenido a quien puede usar la app.</li>
+      <li><b>Subtítulos siempre</b>, máximo dos líneas, con la palabra clave resaltada en verde (donar) o turquesa (Moments). Solo el reel 06 usa los dos colores, porque cuenta el ciclo completo.</li>
+      <li><b>Entre 22 y 28 segundos.</b> Si al editar te sobra, corta.</li>
+      <li><b>Hooks alternativos:</b> publícalos como Reels de prueba (se enseñan primero a gente que no te sigue) y quédate con el que más retenga en los primeros 3 segundos.</li>
+      <li><b>Lo marcado <span class="fill">[así]</span> se rellena con datos reales</b> antes de grabar: precios, créditos, tiempos, el top de Moments. Ningún número inventado.</li>
+      <li><b>Hora de publicación:</b> prueba entre las 20:00 y las 22:00 y compara con la franja de 13:00 a 14:00 en dos o tres reels.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="week-head">
+      <span class="eyebrow">Calendario</span>
+      <h2>Seis semanas, diez reels</h2>
+      <p class="lede">Seis de Moments (la novedad y lo que te diferencia), tres de donar (la puerta de entrada gratis) y uno con el ciclo completo.</p>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--verde)"></i> Donar · gratis</span>
+      <span><i style="background:var(--turquesa)"></i> Moments · alquilar</span>
+      <span><i style="background:linear-gradient(90deg,var(--verde),var(--turquesa))"></i> Ciclo completo</span>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Fecha</th><th>Reel</th><th>Función</th><th>Por qué ese día</th></tr></thead>
+        <tbody>
+<tr><td class="date">Lun 26 oct</td><td><a href="#reel-01"><span class="mono">01</span> Un disfraz para cuatro horas</a></td><td><span class="tag moments">Moments · alquilar</span></td><td class="reason">Halloween es el sábado 31: hace falta margen para alquilar</td></tr>
+<tr><td class="date">Jue 29 oct</td><td><a href="#reel-02"><span class="mono">02</span> La caja del «por si acaso»</a></td><td><span class="tag donar">Donar · gratis</span></td><td class="reason">Cambio de armario de otoño</td></tr>
+<tr><td class="date">Dom 1 nov</td><td><a href="#reel-03"><span class="mono">03</span> Lo que más alquiláis (no es lo que esperaba)</a></td><td><span class="tag moments">Moments · alquilar</span></td><td class="reason">Tres meses de Moments: primer balance</td></tr>
+<tr><td class="date">Mié 4 nov</td><td><a href="#reel-04"><span class="mono">04</span> ¿Cuántas veces has usado tu taladro?</a></td><td><span class="tag moments">Moments · alquilar</span></td><td class="reason">Primera semana normal tras el puente de Todos los Santos</td></tr>
+<tr><td class="date">Vie 6 nov</td><td><a href="#reel-05"><span class="mono">05</span> ¿Cuánto tarda en irse gratis?</a></td><td><span class="tag donar">Donar · gratis</span></td><td class="reason">Viernes: más gente en casa para ver y pedir</td></tr>
+<tr><td class="date">Mar 10 nov</td><td><a href="#reel-06"><span class="mono">06</span> Ocho invitados, cuatro sillas</a></td><td><span class="tag bridge">Ciclo completo</span></td><td class="reason">Temporada de cenas en casa</td></tr>
+<tr><td class="date">Vie 13 nov</td><td><a href="#reel-07"><span class="mono">07</span> Compradas para usar una vez</a></td><td><span class="tag moments">Moments · alquilar</span></td><td class="reason">Recoge el disfraz del reel 01 como guiño</td></tr>
+<tr class="gap"><td class="date">16 – 22 nov</td><td colspan="3">Semana para regrabar el ganador con otro hook (sin guion nuevo)</td></tr>
+<tr><td class="date">Mar 24 nov</td><td><a href="#reel-08"><span class="mono">08</span> El mejor descuento de Black Friday</a></td><td><span class="tag moments">Moments · alquilar</span></td><td class="reason">Semana de Black Friday, antes del viernes</td></tr>
+<tr><td class="date">Vie 27 nov · Black Friday</td><td><a href="#reel-09"><span class="mono">09</span> Tengo <span class="fill">[X]</span>€ parados en mi piso</a></td><td><span class="tag donar">Donar · gratis</span></td><td class="reason">El mismo día de Black Friday</td></tr>
+<tr><td class="date">Mar 1 dic</td><td><a href="#reel-10"><span class="mono">10</span> Un puente sin comprar nada</a></td><td><span class="tag moments">Moments · alquilar</span></td><td class="reason">Antes del puente de diciembre</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+    <section class="week">
+      <div class="week-head">
+        <span class="eyebrow">Semana 1 · 26 oct – 1 nov</span>
+        <h2>Fechas que ya están en el calendario de todos</h2>
+        <p class="lede">Halloween el sábado, el cambio de armario estas semanas y el primer balance de Moments. El reel 01 corre prisa: publícalo el lunes.</p>
+      </div>
+      <div class="reels">
+      <article class="reel" data-kind="moments" id="reel-01">
+        <div class="slate" aria-hidden="true"></div>
+        <header class="reel-head">
+          <div class="reel-id">
+            <span class="reel-no">REEL 01</span>
+            <span class="tag moments">Moments · alquilar</span>
+          </div>
+          <span class="reel-dur" title="Duración">0:22</span>
+        </header>
+        <h3>Un disfraz para cuatro horas</h3>
+        <p class="reel-meta">Lun 26 oct · Piso · a cámara + screen-record</p>
+
+        <div class="hook">
+          <span class="k">Hook · segundo 0</span>
+          <dl>
+            <div><dt>Se ve</dt><dd>La bolsa del disfraz pegada a cámara, con la etiqueta del precio bien visible.</dd></div>
+            <div><dt>Se dice</dt><dd class="hook-line">«¿35 euros por un disfraz que vas a llevar cuatro horas?»</dd></div>
+            <div><dt>En pantalla</dt><dd><span class="sub">35€ por 4 horas 🎃</span></dd></div>
+          </dl>
+        </div>
+
+        <details class="literal" open>
+          <summary><span class="chev" aria-hidden="true">▶</span> Guion literal, segundo a segundo <span class="dur">0:22</span></summary>
+          <ol class="beats"><li class="beat"><span class="tc">0:00–0:02</span><div class="beat-body"><p class="plano"><b>Plano:</b> primer plano de la bolsa con la etiqueta; la bajas y apareces tú.</p><p class="dice">«¿35 euros por un disfraz que vas a llevar cuatro horas?»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">35€ por 4 horas 🎃</span></p></div></li><li class="beat"><span class="tc">0:02–0:07</span><div class="beat-body"><p class="plano"><b>Plano:</b> abres el armario y enseñas los disfraces de otros años amontonados.</p><p class="dice">«Y el domingo acaba aquí. Con los de otros años.»</p></div></li><li class="beat"><span class="tc">0:07–0:14</span><div class="beat-body"><p class="plano"><b>Plano:</b> screen-record: abres Donnit, entras en Moments y buscas «disfraz» cerca de ti.</p><p class="dice">«Este año alquílalo a un vecino en Moments. Lo recoges el sábado y lo devuelves el domingo.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Alquílalo en Moments</span></p></div></li><li class="beat"><span class="tc">0:14–0:19</span><div class="beat-body"><p class="plano"><b>Plano:</b> a cámara, con uno de tus disfraces viejos en la mano.</p><p class="dice">«¿Tienes uno guardado? Súbelo tú. Alguien de tu barrio lo está buscando para el sábado.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">¿Tienes uno? Súbelo</span></p></div></li><li class="beat"><span class="tc">0:19–0:22</span><div class="beat-body"><p class="plano"><b>Plano:</b> cierre con la app abierta en el móvil y el logo.</p><p class="dice">«Descarga Donnit.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Descarga Donnit</span></p></div></li></ol>
+        </details>
+
+        <p class="cta-line"><span class="k">CTA</span><span class="v">Descarga Donnit y busca «disfraz» en Moments.</span></p>
+
+        <div class="copy-block">
+          <div class="copy-head">
+            <span class="k">Copy del post</span>
+            <button type="button" class="copy-btn" data-copy="copy-01" id="btn-copy-01">Copiar copy</button>
+          </div>
+          <pre class="copy" id="copy-01">Este año el disfraz no se compra: se alquila al vecino 🎃
+
+Busca «disfraz» en Moments, recógelo el sábado y devuélvelo el domingo. ¿Tienes uno guardado de otros años? Súbelo y que vuelva a salir de fiesta.
+
+👉 Descarga Donnit en App Store y Google Play (enlace en la bio)
+
+#halloween #disfraz #alquilarentrevecinos #consumoconsciente #donnit</pre>
+        </div>
+
+        <div class="extras">
+          <div class="extra">
+            <span class="k">Hooks alternativos para probar</span>
+            <ul class="alts"><li>«No compres disfraz este Halloween. Te explico por qué.»</li><li>«Tengo cuatro disfraces que usé una sola noche.»</li></ul>
+          </div>
+          <div class="extra">
+            <span class="k">Por qué funciona</span>
+            <p>El precio por hora hace absurdo comprar. La fecha es real y está a cinco días: el sábado 31 todo el mundo necesita un disfraz, así que el reel resuelve un problema de esta semana. Además pide oferta, no solo demanda: Moments necesita disfraces subidos para que quien busque encuentre.</p>
+          </div>
+          <div class="extra prep">
+            <span class="k">Antes de grabar</span>
+            <p>Antes de publicar, sube tú 2 o 3 disfraces a Moments (o pide a amigos que suban los suyos) para que el screen-record sea real y quien busque encuentre algo. Usa el precio de la etiqueta que enseñes. Publica el lunes o, como tarde, el martes.</p>
+          </div>
+        </div>
+      </article>
+      <article class="reel" data-kind="donar" id="reel-02">
+        <div class="slate" aria-hidden="true"></div>
+        <header class="reel-head">
+          <div class="reel-id">
+            <span class="reel-no">REEL 02</span>
+            <span class="tag donar">Donar · gratis</span>
+          </div>
+          <span class="reel-dur" title="Duración">0:26</span>
+        </header>
+        <h3>La caja del «por si acaso»</h3>
+        <p class="reel-meta">Jue 29 oct · Dormitorio · POV</p>
+
+        <div class="hook">
+          <span class="k">Hook · segundo 0</span>
+          <dl>
+            <div><dt>Se ve</dt><dd>La cama cubierta de ropa de verano y tú en medio, sujetando una prenda.</dd></div>
+            <div><dt>Se dice</dt><dd class="hook-line">«Seis cosas que no me puse ni una vez este verano.»</dd></div>
+            <div><dt>En pantalla</dt><dd><span class="sub">Cambio de armario: la verdad 😬</span></dd></div>
+          </dl>
+        </div>
+
+        <details class="literal" open>
+          <summary><span class="chev" aria-hidden="true">▶</span> Guion literal, segundo a segundo <span class="dur">0:26</span></summary>
+          <ol class="beats"><li class="beat"><span class="tc">0:00–0:02</span><div class="beat-body"><p class="plano"><b>Plano:</b> cenital o frontal: cama llena de ropa de verano, tú con una prenda en la mano.</p><p class="dice">«Seis cosas que no me puse ni una vez este verano.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Cambio de armario: la verdad 😬</span></p></div></li><li class="beat"><span class="tc">0:02–0:10</span><div class="beat-body"><p class="plano"><b>Plano:</b> cortes de un segundo: coges prenda por prenda y la enseñas a cámara.</p><p class="dice">«Esta camisa, con la etiqueta puesta. Estas sandalias, me destrozaban los pies. Este bañador, ni lo estrené.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">1 · 2 · 3…</span></p></div></li><li class="beat"><span class="tc">0:10–0:16</span><div class="beat-body"><p class="plano"><b>Plano:</b> señalas una caja de cartón con «POR SI ACASO» escrito a rotulador.</p><p class="dice">«Y lo de siempre es meterlo en la caja del «por si acaso». Esta caja lleva tres años sin abrirse.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">El «por si acaso» 📦</span></p></div></li><li class="beat"><span class="tc">0:16–0:22</span><div class="beat-body"><p class="plano"><b>Plano:</b> foto a una prenda con el móvil y screen-record publicándola gratis.</p><p class="dice">«Este año no. Foto, Donnit, y le llega gratis a alguien de mi barrio.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Gratis para tu barrio 💚</span></p></div></li><li class="beat"><span class="tc">0:22–0:26</span><div class="beat-body"><p class="plano"><b>Plano:</b> el armario con hueco; cara de alivio.</p><p class="dice">«Armario con espacio. Por fin.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Descarga Donnit 💚</span></p></div></li></ol>
+        </details>
+
+        <p class="cta-line"><span class="k">CTA</span><span class="v">Descarga Donnit y dona lo primero que salga de la caja.</span></p>
+
+        <div class="copy-block">
+          <div class="copy-head">
+            <span class="k">Copy del post</span>
+            <button type="button" class="copy-btn" data-copy="copy-02" id="btn-copy-02">Copiar copy</button>
+          </div>
+          <pre class="copy" id="copy-02">El «por si acaso» lleva tres años en una caja 📦
+
+Este cambio de armario, lo que no te pusiste en todo el verano se va gratis a alguien de tu barrio. Foto, Donnit y listo.
+
+Envíaselo a quien también tiene la caja 👀
+
+👉 Descarga Donnit (enlace en la bio)
+
+#cambiodearmario #ordenencasa #segundamano #donar #donnit</pre>
+        </div>
+
+        <div class="extras">
+          <div class="extra">
+            <span class="k">Hooks alternativos para probar</span>
+            <ul class="alts"><li>«Mi caja del «por si acaso» lleva tres años cerrada. Hoy la abro.»</li><li>«Si haces el cambio de armario este finde, no hagas esto.»</li></ul>
+          </div>
+          <div class="extra">
+            <span class="k">Por qué funciona</span>
+            <p>El cambio de armario es un ritual muy de aquí y de estas semanas: quien lo ve se reconoce en el primer segundo, y es una señal local que acerca el reel a público de España. La caja del «por si acaso» es el apego a lo que ya tienes hecho objeto: casi todo el mundo tiene una o conoce a alguien que la tiene, y por eso se reenvía.</p>
+          </div>
+          <div class="extra prep">
+            <span class="k">Antes de grabar</span>
+            <p>Ropa real tuya, nada comprado para el vídeo. Una caja de cartón con «POR SI ACASO» escrito a rotulador: es la imagen que la gente recuerda.</p>
+          </div>
+        </div>
+      </article>
+      <article class="reel" data-kind="moments" id="reel-03">
+        <div class="slate" aria-hidden="true"></div>
+        <header class="reel-head">
+          <div class="reel-id">
+            <span class="reel-no">REEL 03</span>
+            <span class="tag moments">Moments · alquilar</span>
+          </div>
+          <span class="reel-dur" title="Duración">0:25</span>
+        </header>
+        <h3>Lo que más alquiláis (no es lo que esperaba)</h3>
+        <p class="reel-meta">Dom 1 nov · Piso · fundador a cámara</p>
+
+        <div class="hook">
+          <span class="k">Hook · segundo 0</span>
+          <dl>
+            <div><dt>Se ve</dt><dd>Tú con el móvil en la mano, levantas la vista hacia cámara con cara de sorpresa.</dd></div>
+            <div><dt>Se dice</dt><dd class="hook-line">«Lo que más alquiláis en Donnit no es lo que yo esperaba.»</dd></div>
+            <div><dt>En pantalla</dt><dd><span class="sub">Lo que más se alquila 👀</span></dd></div>
+          </dl>
+        </div>
+
+        <details class="literal" open>
+          <summary><span class="chev" aria-hidden="true">▶</span> Guion literal, segundo a segundo <span class="dur">0:25</span></summary>
+          <ol class="beats"><li class="beat"><span class="tc">0:00–0:02</span><div class="beat-body"><p class="plano"><b>Plano:</b> primer plano, móvil en la mano; levantas la vista.</p><p class="dice">«Lo que más alquiláis en Donnit no es lo que yo esperaba.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Lo que más se alquila 👀</span></p></div></li><li class="beat"><span class="tc">0:02–0:08</span><div class="beat-body"><p class="plano"><b>Plano:</b> b-roll rápido de una tabla de paddle y una tienda de campaña (fotos de agosto).</p><p class="dice">«Cuando lanzamos Moments en agosto, yo apostaba por tablas de paddle y tiendas de campaña.»</p></div></li><li class="beat"><span class="tc">0:08–0:15</span><div class="beat-body"><p class="plano"><b>Plano:</b> a cámara, cuentas con los dedos; cada objeto aparece en pantalla.</p><p class="dice">«Pues el top tres es: <span class="fill">[objeto 3]</span>… <span class="fill">[objeto 2]</span>… y el número uno: <span class="fill">[objeto 1]</span>.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">3. <span class="fill">[objeto]</span> · 2. <span class="fill">[objeto]</span> · 1. <span class="fill">[objeto]</span></span></p></div></li><li class="beat"><span class="tc">0:15–0:21</span><div class="beat-body"><p class="plano"><b>Plano:</b> más cerca, en tono de confidencia.</p><p class="dice">«Y mi favorito: alguien alquiló <span class="fill">[objeto raro]</span> para <span class="fill">[motivo real]</span>.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub"><span class="fill">[objeto raro]</span> 🤯</span></p></div></li><li class="beat"><span class="tc">0:21–0:25</span><div class="beat-body"><p class="plano"><b>Plano:</b> media sonrisa; señalas hacia abajo.</p><p class="dice">«¿Qué alquilarías tú? Te leo. Y descarga Donnit.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">¿Qué alquilarías tú? 👇</span></p></div></li></ol>
+        </details>
+
+        <p class="cta-line"><span class="k">CTA</span><span class="v">¿Qué alquilarías tú? Comenta y descarga Donnit.</span></p>
+
+        <div class="copy-block">
+          <div class="copy-head">
+            <span class="k">Copy del post</span>
+            <button type="button" class="copy-btn" data-copy="copy-03" id="btn-copy-03">Copiar copy</button>
+          </div>
+          <pre class="copy" id="copy-03">Lanzamos Moments en agosto y nos habéis roto la predicción 😅
+
+El top 3 de lo que más se alquila entre vecinos en Donnit: <span class="fill">[objeto 3]</span>, <span class="fill">[objeto 2]</span> y <span class="fill">[objeto 1]</span>. Y alguien alquiló <span class="fill">[objeto raro]</span>. Sí.
+
+¿Qué alquilarías tú? Te leo en comentarios 👇
+
+👉 Descarga Donnit (enlace en la bio)
+
+#buildinpublic #startup #alquilarentrevecinos #economiacircular #donnit</pre>
+        </div>
+
+        <div class="extras">
+          <div class="extra">
+            <span class="k">Hooks alternativos para probar</span>
+            <ul class="alts"><li>«Tres meses de Moments y un dato que no me esperaba.»</li><li>«Os enseño lo que más se alquila en Donnit. El número uno es raro.»</li></ul>
+          </div>
+          <div class="extra">
+            <span class="k">Por qué funciona</span>
+            <p>Es tu fórmula ganadora: fundador a cámara contando algo de dentro (en primavera eso te dio 8–11K views por pieza). La cuenta atrás hasta el número uno sostiene la retención, y la pregunta final trae comentarios, que además son ideas para la siguiente tanda.</p>
+          </div>
+          <div class="extra prep">
+            <span class="k">Antes de grabar</span>
+            <p>Pide a producto el top 3 real de alquileres desde agosto y una anécdota curiosa, sin datos personales. Si el top no sorprende, cambia el ángulo a «Lo que más buscáis y nadie ofrece»: misma estructura, y de paso pides a la gente que lo suba.</p>
+          </div>
+        </div>
+      </article>
+      </div>
+    </section>
+
+    <section class="week">
+      <div class="week-head">
+        <span class="eyebrow">Semanas 2 y 3 · 2 – 15 nov</span>
+        <h2>Moments funcionando, con gente de verdad</h2>
+        <p class="lede">Calle, experimento, el ciclo completo y un ranking para comentar. Aquí se demuestra que en tu barrio hay vecinos usando la app.</p>
+      </div>
+      <div class="reels">
+      <article class="reel" data-kind="moments" id="reel-04">
+        <div class="slate" aria-hidden="true"></div>
+        <header class="reel-head">
+          <div class="reel-id">
+            <span class="reel-no">REEL 04</span>
+            <span class="tag moments">Moments · alquilar</span>
+          </div>
+          <span class="reel-dur" title="Duración">0:28</span>
+        </header>
+        <h3>¿Cuántas veces has usado tu taladro?</h3>
+        <p class="reel-meta">Mié 4 nov · Calle · entrevistas</p>
+
+        <div class="hook">
+          <span class="k">Hook · segundo 0</span>
+          <dl>
+            <div><dt>Se ve</dt><dd>Micro de mano hacia una persona en una calle reconocible, de día.</dd></div>
+            <div><dt>Se dice</dt><dd class="hook-line">«¿Cuántas veces has usado tu taladro este año?»</dd></div>
+            <div><dt>En pantalla</dt><dd><span class="sub">¿Cuántas veces usaste tu taladro? 🔧</span></dd></div>
+          </dl>
+        </div>
+
+        <details class="literal" open>
+          <summary><span class="chev" aria-hidden="true">▶</span> Guion literal, segundo a segundo <span class="dur">0:28</span></summary>
+          <ol class="beats"><li class="beat"><span class="tc">0:00–0:02</span><div class="beat-body"><p class="plano"><b>Plano:</b> micro hacia la primera persona; calle reconocible detrás (en BCN: Gràcia, Sant Antoni o el Born).</p><p class="dice">«¿Cuántas veces has usado tu taladro este año?»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">¿Cuántas veces usaste tu taladro? 🔧</span></p></div></li><li class="beat"><span class="tc">0:02–0:14</span><div class="beat-body"><p class="plano"><b>Plano:</b> montaje de 4 o 5 respuestas reales, 2–3 segundos cada una, cortes secos.</p><p class="action">Respuestas reales, sin guionizar. Suelen salir cosas como «¿una?», «ninguna, lo tiene mi padre» o «lo compré para colgar la tele».</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Subtítulo de cada respuesta</span></p></div></li><li class="beat"><span class="tc">0:14–0:19</span><div class="beat-body"><p class="plano"><b>Plano:</b> vuelves a la persona con la mejor respuesta.</p><p class="dice">«¿Y cuánto te costó?»</p><p class="action">Su respuesta, tal cual.</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub"><span class="fill">[precio que diga]</span>€</span></p></div></li><li class="beat"><span class="tc">0:19–0:25</span><div class="beat-body"><p class="plano"><b>Plano:</b> tú a cámara en la misma calle; corte a screen-record de un taladro en Moments en ese barrio.</p><p class="dice">«Pues aquí, en tu barrio, te lo alquila un vecino por <span class="fill">[precio real]</span> el día.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub"><span class="fill">[precio]</span>€ el día · Moments</span></p></div></li><li class="beat"><span class="tc">0:25–0:28</span><div class="beat-body"><p class="plano"><b>Plano:</b> tú a cámara.</p><p class="dice">«Descarga Donnit y búscalo en Moments.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Descarga Donnit</span></p></div></li></ol>
+        </details>
+
+        <p class="cta-line"><span class="k">CTA</span><span class="v">Descarga Donnit y búscalo en Moments.</span></p>
+
+        <div class="copy-block">
+          <div class="copy-head">
+            <span class="k">Copy del post</span>
+            <button type="button" class="copy-btn" data-copy="copy-04" id="btn-copy-04">Copiar copy</button>
+          </div>
+          <pre class="copy" id="copy-04">Le preguntamos a la gente de <span class="fill">[barrio]</span> cuántas veces ha usado su taladro este año 🔧 Las respuestas, en el reel.
+
+Si lo necesitas un domingo, no hace falta comprarlo: en Moments te lo alquila un vecino.
+
+Etiqueta a quien tiene un taladro sin estrenar 👇
+
+👉 Descarga Donnit (enlace en la bio)
+
+#entrevistacallejera #barcelona #bricolaje #alquilarentrevecinos #donnit</pre>
+        </div>
+
+        <div class="extras">
+          <div class="extra">
+            <span class="k">Hooks alternativos para probar</span>
+            <ul class="alts"><li>«Pregunta incómoda: ¿dónde está tu taladro ahora mismo?»</li><li>«He preguntado a <span class="fill">[n]</span> personas por su taladro. Mira lo que dicen.»</li></ul>
+          </div>
+          <div class="extra">
+            <span class="k">Por qué funciona</span>
+            <p>Las entrevistas en la calle se comparten mucho: caras reales, respuestas que nadie controla y un barrio que la gente reconoce. Es prueba social y señal local a la vez. Y la pregunta se puede convertir en serie: la tienda de campaña, la plancha de raclette, la escalera.</p>
+          </div>
+          <div class="extra prep">
+            <span class="k">Antes de grabar</span>
+            <p>Micro inalámbrico y el móvil en un estabilizador; se graba solo. Pregunta a 15–20 personas para quedarte con 5. Pide permiso para publicar antes de grabar y que lo digan a cámara (o que firmen una autorización). Comprueba que hay taladros en Moments en ese barrio y usa su precio real.</p>
+          </div>
+        </div>
+      </article>
+      <article class="reel" data-kind="donar" id="reel-05">
+        <div class="slate" aria-hidden="true"></div>
+        <header class="reel-head">
+          <div class="reel-id">
+            <span class="reel-no">REEL 05</span>
+            <span class="tag donar">Donar · gratis</span>
+          </div>
+          <span class="reel-dur" title="Duración">0:25</span>
+        </header>
+        <h3>¿Cuánto tarda en irse gratis?</h3>
+        <p class="reel-meta">Vie 6 nov · Piso + portal · experimento</p>
+
+        <div class="hook">
+          <span class="k">Hook · segundo 0</span>
+          <dl>
+            <div><dt>Se ve</dt><dd>Tú con la lámpara en brazos y un cronómetro grande sobreimpreso en 0:00.</dd></div>
+            <div><dt>Se dice</dt><dd class="hook-line">«Voy a regalar esta lámpara a mi barrio. ¿Cuánto tarda alguien en pedirla?»</dd></div>
+            <div><dt>En pantalla</dt><dd><span class="sub">⏱️ ¿Cuánto tarda en irse?</span></dd></div>
+          </dl>
+        </div>
+
+        <details class="literal" open>
+          <summary><span class="chev" aria-hidden="true">▶</span> Guion literal, segundo a segundo <span class="dur">0:25</span></summary>
+          <ol class="beats"><li class="beat"><span class="tc">0:00–0:03</span><div class="beat-body"><p class="plano"><b>Plano:</b> tú con la lámpara; cronómetro sobreimpreso.</p><p class="dice">«Voy a regalar esta lámpara a mi barrio. ¿Cuánto tarda alguien en pedirla?»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">⏱️ ¿Cuánto tarda en irse?</span></p></div></li><li class="beat"><span class="tc">0:03–0:07</span><div class="beat-body"><p class="plano"><b>Plano:</b> foto de la lámpara y screen-record publicándola gratis.</p><p class="dice">«Foto, publicar… y empieza a contar.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub"><span class="fill">[hora real]</span> · publicada</span></p></div></li><li class="beat"><span class="tc">0:07–0:13</span><div class="beat-body"><p class="plano"><b>Plano:</b> jump cuts de tu día (café, ordenador, mirar el móvil); el cronómetro avanza.</p><p class="action">Sin voz, o un «nada… nada…» entre dientes.</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub"><span class="fill">[minutos]</span> … nada</span></p></div></li><li class="beat"><span class="tc">0:13–0:17</span><div class="beat-body"><p class="plano"><b>Plano:</b> suena la notificación; reaccionas a cámara.</p><p class="dice">«¡<span class="fill">[tiempo real]</span>! Ya está.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub"><span class="fill">[tiempo real]</span> ✅</span></p></div></li><li class="beat"><span class="tc">0:17–0:22</span><div class="beat-body"><p class="plano"><b>Plano:</b> la entrega en el portal (solo manos si el vecino no quiere salir).</p><p class="dice">«Vive a <span class="fill">[X]</span> calles. La quería para <span class="fill">[motivo real]</span>.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">A <span class="fill">[X]</span> calles de mi casa</span></p></div></li><li class="beat"><span class="tc">0:22–0:25</span><div class="beat-body"><p class="plano"><b>Plano:</b> tú a cámara, junto al hueco donde estaba la lámpara.</p><p class="dice">«Lo que no usas, alguien lo está esperando. Descarga Donnit.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Descarga Donnit 💚</span></p></div></li></ol>
+        </details>
+
+        <p class="cta-line"><span class="k">CTA</span><span class="v">Descarga Donnit y publica tu primera donación.</span></p>
+
+        <div class="copy-block">
+          <div class="copy-head">
+            <span class="k">Copy del post</span>
+            <button type="button" class="copy-btn" data-copy="copy-05" id="btn-copy-05">Copiar copy</button>
+          </div>
+          <pre class="copy" id="copy-05">Experimento: publiqué una lámpara gratis en Donnit y cronometré cuánto tardaba alguien de mi barrio en pedirla ⏱️
+
+Resultado: <span class="fill">[tiempo real]</span>. Vive a <span class="fill">[X]</span> calles.
+
+¿Qué regalarías tú para probarlo? 👇
+
+👉 Descarga Donnit (enlace en la bio)
+
+#experimento #segundamano #regalo #vecinos #donnit</pre>
+        </div>
+
+        <div class="extras">
+          <div class="extra">
+            <span class="k">Hooks alternativos para probar</span>
+            <ul class="alts"><li>«He cronometrado cuánto tarda en volar algo gratis en mi barrio.»</li><li>«Regalé esta lámpara y no me esperaba lo que pasó.»</li></ul>
+          </div>
+          <div class="extra">
+            <span class="k">Por qué funciona</span>
+            <p>El cronómetro abre una pregunta que solo se cierra al final, y la gente se queda a verlo. Además demuestra que en tu zona hay vecinos de verdad usando la app, que es justo la duda de quien todavía no la ha descargado.</p>
+          </div>
+          <div class="extra prep">
+            <span class="k">Antes de grabar</span>
+            <p>No lo finjas. Si tarda horas o un día, cuéntalo así: «tardó 26 horas, y mira quién vino» también funciona. Elige un objeto que apetezca (una lámpara bonita, una silla, plantas). Pide permiso al vecino antes de grabar la entrega.</p>
+          </div>
+        </div>
+      </article>
+      <article class="reel" data-kind="bridge" id="reel-06">
+        <div class="slate" aria-hidden="true"></div>
+        <header class="reel-head">
+          <div class="reel-id">
+            <span class="reel-no">REEL 06</span>
+            <span class="tag bridge">Ciclo completo</span>
+          </div>
+          <span class="reel-dur" title="Duración">0:28</span>
+        </header>
+        <h3>Ocho invitados, cuatro sillas</h3>
+        <p class="reel-meta">Mar 10 nov · Piso · historia + screen-record</p>
+
+        <div class="hook">
+          <span class="k">Hook · segundo 0</span>
+          <dl>
+            <div><dt>Se ve</dt><dd>Un salón pequeño con cuatro sillas en fila y tú contándolas con el dedo.</dd></div>
+            <div><dt>Se dice</dt><dd class="hook-line">«Ocho invitados a cenar. Cuatro sillas.»</dd></div>
+            <div><dt>En pantalla</dt><dd><span class="sub">8 invitados · 4 sillas 😅</span></dd></div>
+          </dl>
+        </div>
+
+        <details class="literal" open>
+          <summary><span class="chev" aria-hidden="true">▶</span> Guion literal, segundo a segundo <span class="dur">0:28</span></summary>
+          <ol class="beats"><li class="beat"><span class="tc">0:00–0:02</span><div class="beat-body"><p class="plano"><b>Plano:</b> salón, las 4 sillas en fila, tú contando con el dedo.</p><p class="dice">«Ocho invitados a cenar. Cuatro sillas.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">8 invitados · 4 sillas 😅</span></p></div></li><li class="beat"><span class="tc">0:02–0:06</span><div class="beat-body"><p class="plano"><b>Plano:</b> a cámara, cara de «ni de broma».</p><p class="dice">«¿Comprar cuatro sillas para una noche? Ni de broma. Mira lo que hice.»</p></div></li><li class="beat"><span class="tc">0:06–0:12</span><div class="beat-body"><p class="plano"><b>Plano:</b> screen-record donando una lámpara. Subtítulos en verde.</p><p class="dice">«Primero doné esta lámpara que no usaba. Como evito que alguien compre una nueva, gano créditos de CO₂.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Donas 🟢 → +<span class="fill">[X]</span> créditos CO₂</span></p></div></li><li class="beat"><span class="tc">0:12–0:19</span><div class="beat-body"><p class="plano"><b>Plano:</b> screen-record en Moments aplicando los créditos al alquiler de las sillas. Subtítulos en turquesa.</p><p class="dice">«Y con esos créditos alquilo cuatro sillas a un vecino. Más baratas.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Alquilas 🟩 <span class="fill">[A]</span>€ → <span class="fill">[B]</span>€</span></p></div></li><li class="beat"><span class="tc">0:19–0:25</span><div class="beat-body"><p class="plano"><b>Plano:</b> recoges las sillas en el portal; corte a la mesa llena y risas.</p><p class="dice">«La lámpara tiene casa nueva, ceno con todos y nadie ha comprado nada.»</p></div></li><li class="beat"><span class="tc">0:25–0:28</span><div class="beat-body"><p class="plano"><b>Plano:</b> cierre con la app.</p><p class="dice">«Dona lo que no usas, alquila lo que necesitas. Descarga Donnit.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Dona lo que no usas, alquila lo que necesitas</span></p></div></li></ol>
+        </details>
+
+        <p class="cta-line"><span class="k">CTA</span><span class="v">Dona lo que no usas, alquila lo que necesitas. Descarga Donnit.</span></p>
+
+        <div class="copy-block">
+          <div class="copy-head">
+            <span class="k">Copy del post</span>
+            <button type="button" class="copy-btn" data-copy="copy-06" id="btn-copy-06">Copiar copy</button>
+          </div>
+          <pre class="copy" id="copy-06">8 invitados, 4 sillas y cero ganas de comprar más 😅
+
+Doné una lámpara que no usaba, gané créditos de CO₂ y con ellos alquilé cuatro sillas a un vecino, más baratas. Así funciona Donnit: dona lo que no usas, alquila lo que necesitas.
+
+Envíaselo a quien siempre organiza las cenas 👇
+
+👉 Descarga Donnit (enlace en la bio)
+
+#cenaconamigos #pisopequeño #economiacircular #alquilarentrevecinos #donnit</pre>
+        </div>
+
+        <div class="extras">
+          <div class="extra">
+            <span class="k">Hooks alternativos para probar</span>
+            <ul class="alts"><li>«El truco para tener sillas para todos sin comprar ni una.»</li><li>«Doné una lámpara y me salieron más baratas las sillas de la cena.»</li></ul>
+          </div>
+          <div class="extra">
+            <span class="k">Por qué funciona</span>
+            <p>Es el único reel de la tanda que junta verde y turquesa, porque cuenta el ciclo entero. En julio los reels explicativos se quedaron en 500–1.400 views; aquí el mecanismo va dentro de una historia con un problema que ha tenido cualquiera que viva en un piso pequeño. Si ya publicaste el flywheel de agosto, este es su versión en historia, no una repetición.</p>
+          </div>
+          <div class="extra prep">
+            <span class="k">Antes de grabar</span>
+            <p>Créditos y precios reales de tu propia cuenta, antes y después de aplicar los créditos. Graba la cena de verdad, con amigos que acepten salir.</p>
+          </div>
+        </div>
+      </article>
+      <article class="reel" data-kind="moments" id="reel-07">
+        <div class="slate" aria-hidden="true"></div>
+        <header class="reel-head">
+          <div class="reel-id">
+            <span class="reel-no">REEL 07</span>
+            <span class="tag moments">Moments · alquilar</span>
+          </div>
+          <span class="reel-dur" title="Duración">0:24</span>
+        </header>
+        <h3>Compradas para usar una vez</h3>
+        <p class="reel-meta">Vie 13 nov · Piso · ranking</p>
+
+        <div class="hook">
+          <span class="k">Hook · segundo 0</span>
+          <dl>
+            <div><dt>Se ve</dt><dd>Tú sentado en el suelo del salón con cinco objetos alrededor.</dd></div>
+            <div><dt>Se dice</dt><dd class="hook-line">«Ranking de cosas que compraste para usar una vez. El número uno lo tienes en casa.»</dd></div>
+            <div><dt>En pantalla</dt><dd><span class="sub">Compradas para usar UNA vez 🏆</span></dd></div>
+          </dl>
+        </div>
+
+        <details class="literal" open>
+          <summary><span class="chev" aria-hidden="true">▶</span> Guion literal, segundo a segundo <span class="dur">0:24</span></summary>
+          <ol class="beats"><li class="beat"><span class="tc">0:00–0:03</span><div class="beat-body"><p class="plano"><b>Plano:</b> plano general o cenital: tú en el suelo con los cinco objetos alrededor.</p><p class="dice">«Ranking de cosas que compraste para usar una vez. El número uno lo tienes en casa.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Compradas para usar UNA vez 🏆</span></p></div></li><li class="beat"><span class="tc">0:03–0:06</span><div class="beat-body"><p class="plano"><b>Plano:</b> coges la tienda de campaña.</p><p class="dice">«Cinco: la tienda de campaña del festival.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">5. Tienda de campaña ⛺</span></p></div></li><li class="beat"><span class="tc">0:06–0:09</span><div class="beat-body"><p class="plano"><b>Plano:</b> la plancha de raclette.</p><p class="dice">«Cuatro: la raclette de aquella cena.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">4. Raclette 🧀</span></p></div></li><li class="beat"><span class="tc">0:09–0:12</span><div class="beat-body"><p class="plano"><b>Plano:</b> el disfraz de Halloween.</p><p class="dice">«Tres: el disfraz. Sí, el de hace dos semanas.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">3. Disfraz 🎃</span></p></div></li><li class="beat"><span class="tc">0:12–0:15</span><div class="beat-body"><p class="plano"><b>Plano:</b> la escalera.</p><p class="dice">«Dos: la escalera para colgar un solo cuadro.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">2. Escalera 🪜</span></p></div></li><li class="beat"><span class="tc">0:15–0:20</span><div class="beat-body"><p class="plano"><b>Plano:</b> sacas el taladro de una caja, con polvo y cara de culpa.</p><p class="dice">«Y el número uno: el taladro. Que no sabes ni dónde tiene las brocas.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">1. EL TALADRO 🔧</span></p></div></li><li class="beat"><span class="tc">0:20–0:24</span><div class="beat-body"><p class="plano"><b>Plano:</b> a cámara.</p><p class="dice">«Todo esto se alquila al vecino en Moments. ¿Cuál es el tuyo?»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">¿Cuál es el tuyo? 👇 · Descarga Donnit</span></p></div></li></ol>
+        </details>
+
+        <p class="cta-line"><span class="k">CTA</span><span class="v">¿Cuál es el tuyo? Comenta y descarga Donnit.</span></p>
+
+        <div class="copy-block">
+          <div class="copy-head">
+            <span class="k">Copy del post</span>
+            <button type="button" class="copy-btn" data-copy="copy-07" id="btn-copy-07">Copiar copy</button>
+          </div>
+          <pre class="copy" id="copy-07">Ranking de cosas que compraste para usar UNA vez 🏆 ¿Cuál tienes tú en casa?
+
+Todas se pueden alquilar a un vecino en Moments sin tener que comprarlas. Y si tienes alguna muerta de risa en el armario, súbela tú.
+
+Comenta la tuya 👇
+
+👉 Descarga Donnit (enlace en la bio)
+
+#ranking #compras #minimalismo #alquilarentrevecinos #donnit</pre>
+        </div>
+
+        <div class="extras">
+          <div class="extra">
+            <span class="k">Hooks alternativos para probar</span>
+            <ul class="alts"><li>«Cinco cosas que nadie debería comprar. La última la tienes tú.»</li><li>«Si tienes uno de estos cinco objetos en casa, este vídeo es para ti.»</li></ul>
+          </div>
+          <div class="extra">
+            <span class="k">Por qué funciona</span>
+            <p>La cuenta atrás hace que la gente espere al número uno, y «lo tienes en casa» lo vuelve personal. La pregunta final pide comentarios, y cada comentario con un objeto es una idea para el siguiente reel o para la serie de entrevistas en la calle.</p>
+          </div>
+          <div class="extra prep">
+            <span class="k">Antes de grabar</span>
+            <p>Objetos reales. Pide prestados los que no tengas a amigos o vecinos, o alquílalos en Moments y lo cuentas. Es el más fácil de la tanda: se graba en una tarde.</p>
+          </div>
+        </div>
+      </article>
+      </div>
+    </section>
+
+    <section class="week">
+      <div class="week-head">
+        <span class="eyebrow">Semana 4 · 16 – 22 nov</span>
+        <h2>Regrabar el ganador</h2>
+      </div>
+      <div class="rerecord">
+        <p>Esta semana no hay guion nuevo. Mira cuál de los reels 01–07 tuvo más <b>envíos por cuenta alcanzada</b> y vuelve a grabarlo con uno de sus hooks alternativos.</p>
+        <p>Nunca subas el mismo vídeo otra vez: en mayo, «De construir para otros» pasó de 8.797 views a 131 al resubirlo igual. Regrabado con otro hook y otros planos cuenta como pieza nueva.</p>
+      </div>
+    </section>
+
+    <section class="week">
+      <div class="week-head">
+        <span class="eyebrow">Semana 5 · 23 – 29 nov</span>
+        <h2>Black Friday al revés</h2>
+        <p class="lede">Contraprogramación en la semana más ruidosa del año: un reel de Moments el martes y uno de donar el mismo viernes.</p>
+      </div>
+      <div class="reels">
+      <article class="reel" data-kind="moments" id="reel-08">
+        <div class="slate" aria-hidden="true"></div>
+        <header class="reel-head">
+          <div class="reel-id">
+            <span class="reel-no">REEL 08</span>
+            <span class="tag moments">Moments · alquilar</span>
+          </div>
+          <span class="reel-dur" title="Duración">0:22</span>
+        </header>
+        <h3>El mejor descuento de Black Friday</h3>
+        <p class="reel-meta">Mar 24 nov · Calle comercial · a cámara</p>
+
+        <div class="hook">
+          <span class="k">Hook · segundo 0</span>
+          <dl>
+            <div><dt>Se ve</dt><dd>Tú delante de escaparates con carteles de descuento, de día.</dd></div>
+            <div><dt>Se dice</dt><dd class="hook-line">«Opinión impopular: el mejor descuento de Black Friday es no comprar.»</dd></div>
+            <div><dt>En pantalla</dt><dd><span class="sub">Black Friday: −100% 🤫</span></dd></div>
+          </dl>
+        </div>
+
+        <details class="literal" open>
+          <summary><span class="chev" aria-hidden="true">▶</span> Guion literal, segundo a segundo <span class="dur">0:22</span></summary>
+          <ol class="beats"><li class="beat"><span class="tc">0:00–0:03</span><div class="beat-body"><p class="plano"><b>Plano:</b> a cámara en una calle comercial (Portal de l'Àngel, Gran Vía o la de tu ciudad), con carteles de «−50%» detrás.</p><p class="dice">«Opinión impopular: el mejor descuento de Black Friday es no comprar.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Black Friday: −100% 🤫</span></p></div></li><li class="beat"><span class="tc">0:03–0:09</span><div class="beat-body"><p class="plano"><b>Plano:</b> b-roll de carteles de descuento, cortes rápidos.</p><p class="dice">«Un 40% menos en algo que vas a usar dos veces sigue siendo pagar por algo que acabará en el armario.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">−40%… para usarlo 2 veces</span></p></div></li><li class="beat"><span class="tc">0:09–0:16</span><div class="beat-body"><p class="plano"><b>Plano:</b> screen-record de Moments buscando algo de los escaparates (una freidora de aire, una tienda de campaña).</p><p class="dice">«Antes de comprarlo, mira si un vecino lo alquila. Lo usas, lo devuelves. Y si te encanta, ya sabes que vale la pena comprarlo.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Antes de comprar → alquila</span></p></div></li><li class="beat"><span class="tc">0:16–0:22</span><div class="beat-body"><p class="plano"><b>Plano:</b> a cámara, media sonrisa.</p><p class="dice">«Este viernes, carrito vacío. Descarga Donnit.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Descarga Donnit · Moments</span></p></div></li></ol>
+        </details>
+
+        <p class="cta-line"><span class="k">CTA</span><span class="v">Este viernes, carrito vacío. Descarga Donnit.</span></p>
+
+        <div class="copy-block">
+          <div class="copy-head">
+            <span class="k">Copy del post</span>
+            <button type="button" class="copy-btn" data-copy="copy-08" id="btn-copy-08">Copiar copy</button>
+          </div>
+          <pre class="copy" id="copy-08">Opinión impopular: el mejor descuento de Black Friday es no comprar 🤫
+
+Antes de pagar por algo que vas a usar dos veces, mira si un vecino lo alquila en Moments. Lo usas, lo devuelves, y si te encanta, ya sabes que merece la pena comprarlo.
+
+Envíaselo a quien ya tiene el carrito lleno 🛒
+
+👉 Descarga Donnit (enlace en la bio)
+
+#blackfriday #greenfriday #consumoresponsable #alquilarentrevecinos #donnit</pre>
+        </div>
+
+        <div class="extras">
+          <div class="extra">
+            <span class="k">Hooks alternativos para probar</span>
+            <ul class="alts"><li>«No compres nada este viernes sin ver esto.»</li><li>«Black Friday: te enseño el único descuento que no caduca.»</li></ul>
+          </div>
+          <div class="extra">
+            <span class="k">Por qué funciona</span>
+            <p>La semana con más publicidad del año es la mejor para decir lo contrario, con humor y sin señalar a nadie. Ir a contracorriente es lo que hace que se comente. El «pruébalo antes de comprarlo» le quita el tono de sermón: no le dices a nadie que no compre, le das una forma de no equivocarse.</p>
+          </div>
+          <div class="extra prep">
+            <span class="k">Antes de grabar</span>
+            <p>Que no se vean marcas ni logos de tiendas: encuadra solo los carteles de descuento o desenfoca. Usa en el screen-record un objeto que esté de verdad en Moments en tu zona.</p>
+          </div>
+        </div>
+      </article>
+      <article class="reel" data-kind="donar" id="reel-09">
+        <div class="slate" aria-hidden="true"></div>
+        <header class="reel-head">
+          <div class="reel-id">
+            <span class="reel-no">REEL 09</span>
+            <span class="tag donar">Donar · gratis</span>
+          </div>
+          <span class="reel-dur" title="Duración">0:28</span>
+        </header>
+        <h3>Tengo <span class="fill">[X]</span>€ parados en mi piso</h3>
+        <p class="reel-meta">Vie 27 nov · Black Friday · Piso · fundador + inventario</p>
+
+        <div class="hook">
+          <span class="k">Hook · segundo 0</span>
+          <dl>
+            <div><dt>Se ve</dt><dd>Tú con una libreta y un contador de euros grande en pantalla.</dd></div>
+            <div><dt>Se dice</dt><dd class="hook-line">«Tengo <span class="fill">[X]</span> euros parados en mi piso. Los he contado.»</dd></div>
+            <div><dt>En pantalla</dt><dd><span class="sub"><span class="fill">[X]</span>€ parados en mi casa 💸</span></dd></div>
+          </dl>
+        </div>
+
+        <details class="literal" open>
+          <summary><span class="chev" aria-hidden="true">▶</span> Guion literal, segundo a segundo <span class="dur">0:28</span></summary>
+          <ol class="beats"><li class="beat"><span class="tc">0:00–0:02</span><div class="beat-body"><p class="plano"><b>Plano:</b> a cámara con la libreta; contador en pantalla.</p><p class="dice">«Tengo <span class="fill">[X]</span> euros parados en mi piso. Los he contado.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub"><span class="fill">[X]</span>€ parados en mi casa 💸</span></p></div></li><li class="beat"><span class="tc">0:02–0:13</span><div class="beat-body"><p class="plano"><b>Plano:</b> cortes de un segundo por objeto; el contador va sumando.</p><p class="dice">«La freidora de aire: <span class="fill">[precio]</span>. La bici estática: <span class="fill">[precio]</span>. El monitor viejo: <span class="fill">[precio]</span>. La cafetera de cápsulas: <span class="fill">[precio]</span>…»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub"><span class="fill">[precio]</span> → <span class="fill">[total]</span>€</span></p></div></li><li class="beat"><span class="tc">0:13–0:18</span><div class="beat-body"><p class="plano"><b>Plano:</b> a cámara, tono tranquilo.</p><p class="dice">«Hoy es Black Friday y todo el mundo está comprando. Yo voy a hacer lo contrario.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Hoy, lo contrario</span></p></div></li><li class="beat"><span class="tc">0:18–0:24</span><div class="beat-body"><p class="plano"><b>Plano:</b> screen-record publicando tres de esos objetos gratis.</p><p class="dice">«Los dono a mi barrio. Gratis. Y gano espacio, que en mi piso vale más que cualquier descuento.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Donados 💚</span></p></div></li><li class="beat"><span class="tc">0:24–0:28</span><div class="beat-body"><p class="plano"><b>Plano:</b> a cámara.</p><p class="dice">«¿Cuánto tienes tú parado? Haz la cuenta. Y descarga Donnit.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">¿Cuánto tienes tú? 👇</span></p></div></li></ol>
+        </details>
+
+        <p class="cta-line"><span class="k">CTA</span><span class="v">¿Cuánto tienes tú parado? Haz la cuenta y descarga Donnit.</span></p>
+
+        <div class="copy-block">
+          <div class="copy-head">
+            <span class="k">Copy del post</span>
+            <button type="button" class="copy-btn" data-copy="copy-09" id="btn-copy-09">Copiar copy</button>
+          </div>
+          <pre class="copy" id="copy-09">Hoy es Black Friday y yo he hecho inventario: <span class="fill">[X]</span>€ en cosas que no uso 💸
+
+No las guardo más: las dono a mi barrio con Donnit. Gano espacio y alguien cerca estrena algo sin comprar nada.
+
+¿Cuánto tienes tú parado en casa? Haz la cuenta y dímelo 👇
+
+👉 Descarga Donnit (enlace en la bio)
+
+#blackfriday #residuocero #ordenencasa #donar #donnit</pre>
+        </div>
+
+        <div class="extras">
+          <div class="extra">
+            <span class="k">Hooks alternativos para probar</span>
+            <ul class="alts"><li>«He hecho inventario de lo que no uso en casa. La cifra da miedo.»</li><li>«Mientras todos compran en Black Friday, yo he hecho esto.»</li></ul>
+          </div>
+          <div class="extra">
+            <span class="k">Por qué funciona</span>
+            <p>Una cifra concreta y tuya despierta curiosidad, y el contador sumando mantiene la mirada hasta el final. Publicado el mismo día de Black Friday va a contracorriente sin criticar a nadie. Y «haz la cuenta» es un reto que cualquiera puede repetir en sus stories mencionándote.</p>
+          </div>
+          <div class="extra prep">
+            <span class="k">Antes de grabar</span>
+            <p>Precios reales: lo que pagaste (y dilo así en pantalla, «lo que pagué»). Elige objetos que vas a donar de verdad ese día. Si coincide con la Semana Europea de Prevención de Residuos (finales de noviembre; comprueba las fechas de este año), menciónala en el copy.</p>
+          </div>
+        </div>
+      </article>
+      </div>
+    </section>
+
+    <section class="week">
+      <div class="week-head">
+        <span class="eyebrow">Semana 6 · 30 nov – 6 dic</span>
+        <h2>El puente</h2>
+        <p class="lede">El último de la tanda convierte views en seguidores con palabra clave, como hizo el carrusel «MAPA».</p>
+      </div>
+      <div class="reels">
+      <article class="reel" data-kind="moments" id="reel-10">
+        <div class="slate" aria-hidden="true"></div>
+        <header class="reel-head">
+          <div class="reel-id">
+            <span class="reel-no">REEL 10</span>
+            <span class="tag moments">Moments · alquilar</span>
+          </div>
+          <span class="reel-dur" title="Duración">0:26</span>
+        </header>
+        <h3>Un puente sin comprar nada</h3>
+        <p class="reel-meta">Mar 1 dic · Piso · lista + palabra clave</p>
+
+        <div class="hook">
+          <span class="k">Hook · segundo 0</span>
+          <dl>
+            <div><dt>Se ve</dt><dd>Una maleta grande abierta en el suelo con todo el equipo alquilado alrededor.</dd></div>
+            <div><dt>Se dice</dt><dd class="hook-line">«Me voy de puente a la nieve y no he comprado nada. Mira.»</dd></div>
+            <div><dt>En pantalla</dt><dd><span class="sub">Puente de diciembre · 0 compras ❄️</span></dd></div>
+          </dl>
+        </div>
+
+        <details class="literal" open>
+          <summary><span class="chev" aria-hidden="true">▶</span> Guion literal, segundo a segundo <span class="dur">0:26</span></summary>
+          <ol class="beats"><li class="beat"><span class="tc">0:00–0:02</span><div class="beat-body"><p class="plano"><b>Plano:</b> maleta grande abierta en el suelo, todo el equipo alrededor.</p><p class="dice">«Me voy de puente a la nieve y no he comprado nada. Mira.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Puente de diciembre · 0 compras ❄️</span></p></div></li><li class="beat"><span class="tc">0:02–0:06</span><div class="beat-body"><p class="plano"><b>Plano:</b> tocas la maleta.</p><p class="dice">«La maleta grande: alquilada a alguien de mi calle.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Maleta · Moments</span></p></div></li><li class="beat"><span class="tc">0:06–0:10</span><div class="beat-body"><p class="plano"><b>Plano:</b> enseñas las cadenas del coche.</p><p class="dice">«Las cadenas: alquiladas. Las compras para un viaje y no las vuelves a ver.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Cadenas · Moments</span></p></div></li><li class="beat"><span class="tc">0:10–0:15</span><div class="beat-body"><p class="plano"><b>Plano:</b> casco, guantes y gafas de esquí.</p><p class="dice">«El casco y las gafas: alquilados.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Casco + gafas · Moments</span></p></div></li><li class="beat"><span class="tc">0:15–0:20</span><div class="beat-body"><p class="plano"><b>Plano:</b> a cámara; la comparación aparece en pantalla.</p><p class="dice">«Todo esto, alquilado: <span class="fill">[A]</span> euros. Comprado: <span class="fill">[B]</span>.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Alquilado <span class="fill">[A]</span>€ · Comprado <span class="fill">[B]</span>€</span></p></div></li><li class="beat"><span class="tc">0:20–0:26</span><div class="beat-body"><p class="plano"><b>Plano:</b> a cámara, energía alta.</p><p class="dice">«Comenta PUENTE y te paso el enlace para alquilar lo tuyo.»</p><p class="ost"><span class="ost-k">En pantalla</span> <span class="sub">Comenta PUENTE 👇</span></p></div></li></ol>
+        </details>
+
+        <p class="cta-line"><span class="k">CTA</span><span class="v">Comenta PUENTE (le llega el enlace por DM) o descarga Donnit desde la bio.</span></p>
+
+        <div class="copy-block">
+          <div class="copy-head">
+            <span class="k">Copy del post</span>
+            <button type="button" class="copy-btn" data-copy="copy-10" id="btn-copy-10">Copiar copy</button>
+          </div>
+          <pre class="copy" id="copy-10">Me voy de puente a la nieve y no he comprado nada ❄️
+
+Maleta, cadenas, casco y gafas: todo alquilado a vecinos en Moments. Alquilado: <span class="fill">[A]</span>€. Comprado nuevo: <span class="fill">[B]</span>€.
+
+Comenta PUENTE y te paso el enlace para alquilar lo tuyo 👇
+
+#puentedediciembre #escapada #nieve #alquilarentrevecinos #donnit</pre>
+        </div>
+
+        <div class="extras">
+          <div class="extra">
+            <span class="k">Hooks alternativos para probar</span>
+            <ul class="alts"><li>«Lo que no deberías comprar para el puente de diciembre.»</li><li>«Cuatro cosas que compras para el puente y no vuelves a usar.»</li></ul>
+          </div>
+          <div class="extra">
+            <span class="k">Por qué funciona</span>
+            <p>Es útil, así que se guarda: la gente lo guarda para preparar el viaje. La palabra clave es tu mejor conversor (el carrusel «MAPA» trajo 130 seguidores, más que ninguna otra pieza), y cada comentario empuja también el alcance.</p>
+          </div>
+          <div class="extra prep">
+            <span class="k">Antes de grabar</span>
+            <p>Si no vas a la nieve, cambia el plan por el que hagas de verdad: casa rural (botas, bastones, mochila grande) o viaje (maleta, adaptador, almohada de viaje). Todo alquilado de verdad en Moments. Deja configurada la respuesta automática por DM antes de publicar.</p>
+          </div>
+        </div>
+      </article>
+      </div>
+    </section>
+
+  <section>
+    <div class="week-head">
+      <span class="eyebrow">Antes de publicar</span>
+      <h2>Repaso de cada reel</h2>
+    </div>
+    <ul class="checklist">
+      <li><span>Todo lo marcado <span class="fill">[así]</span> está sustituido por <b>datos reales</b>, también en el copy.</span></li>
+      <li><span><b>Precios comprobados</b> en la etiqueta, la tienda o la app. Un precio inventado te cuesta la confianza de la comunidad.</span></li>
+      <li><span><b>Permiso de cada persona</b> que salga reconocible: entrevistados, vecinos, invitados.</span></li>
+      <li><span>Música de la <b>biblioteca de Instagram</b>, por debajo de la voz.</span></li>
+      <li><span><b>Color correcto</b> en subtítulos y gráficos: verde si es donar, turquesa si es Moments.</span></li>
+      <li><span><b>Logo solo al cierre</b>, sin tapar la acción.</span></li>
+      <li><span>El cierre pide <b>descargar Donnit</b>, o comentar la palabra clave en el reel 10.</span></li>
+      <li><span>El copy pone el gancho en los <b>primeros 125 caracteres</b> (lo que se ve antes de «más») y lleva <b>máximo 5 hashtags</b>, que es el límite de Instagram.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="week-head">
+      <span class="eyebrow">Después de publicar</span>
+      <h2>Cómo saber qué reel ha funcionado</h2>
+    </div>
+    <div class="measure">
+      <div>
+        <h3>Envíos por cuenta alcanzada</h3>
+        <p>Divide los envíos entre el alcance. Es la mejor señal de que un reel puede viajar, y la que decide cuál se regraba la semana del 16 de noviembre.</p>
+      </div>
+      <div>
+        <h3>Retención a los 3 segundos</h3>
+        <p>Si cae pronto, el problema es el hook, no el tema. Cambia el hook y vuelve a probar antes de descartar la idea.</p>
+      </div>
+      <div>
+        <h3>Seguidores y comentarios</h3>
+        <p>Seguidores ganados por reel y comentarios con la palabra clave PUENTE. El reel 03 y el 07 piden comentarios: léelos, son ideas para la siguiente tanda.</p>
+      </div>
+      <div>
+        <h3>Descargas por reel</h3>
+        <p>En la respuesta automática de PUENTE, manda un enlace de tienda con su propia etiqueta de campaña. Así sabes qué reel trae descargas y no solo views.</p>
+        <div class="code-scroll"><code>App Store:   …/id[APP_ID]?pt=[PROVIDER]&amp;ct=reel10&amp;mt=8
+Google Play: …?id=[PAQUETE]&amp;referrer=utm_source%3Dinstagram%26utm_campaign%3Dreel10</code></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Donnit · Guiones de Instagram, noviembre 2026. Parte del playbook de agosto (58 publicaciones analizadas) y de las reglas de marca de CLAUDE.md. Objetivo: viralidad que se convierta en descargas.</p>
+    <p>Para la siguiente tanda quedan Nochebuena (mesas y sillas en Moments para cenas grandes) y los días antes de Reyes (hacer hueco donando juguetes).</p>
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.dataset.copy);
+      var label = 'Copiar copy';
+      function done(msg) {
+        btn.textContent = msg;
+        setTimeout(function () { btn.textContent = label; }, 2200);
+      }
+      function selectText() {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        done('Seleccionado: cópialo');
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(el.innerText).then(function () { done('Copiado'); }, selectText);
+      } else {
+        selectText();
+      }
+    });
+  });
+</script>
